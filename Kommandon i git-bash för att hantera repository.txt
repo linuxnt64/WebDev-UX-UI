@@ -1,0 +1,94 @@
+Anteckning från försök att lägga till projekt Flickr-API på GitHub
+
+	http://github.com 
+Skapa repo't (på websidan) utan att röra någon kryssruta
+	Git-Bash
+cd till rätt mapp-folder 
+git init
+git add .
+git commit -m "Start of project - not much done yet"  ;eller vad man nu vill kommentera
+git branch -M main
+git remote add origin https://github.com/linuxnt64/Flickr-API.git
+git remote -v
+git push -u origin main
+
+
+
+
+
+Urbans bidrag:
+
+här kommer lite hjälp för GitHub (gäller första projektet):
+ 
+--------------------------------------------------------------------------
+Skapa nytt repo på GitHub och ladda upp filer via Git Bash
+--------------------------------------------------------------------------
+1) Skapa repo lexicon-task-01 i GitHub (browser)
+ 
+2) $ mkdir lexicon-task-01
+ 
+3) $ cd lexicon-task-01
+ 
+4) $ ls
+ 
+5) $ touch index.html style.css
+ 
+6) $ git init
+ 
+7) $ git add .
+ 
+8) $ git status
+ 
+9) $ git commit -m "lexicon task 01 - first commit"
+ 
+10) $ git remote add origin https://github.com/xxxxxxxx/lexicon-task-01.git
+ 
+11) $ git remote -v
+ 
+12) $ git push origin main  ((--force, om den trilskas)
+ 
+     (Nu ligger filerna på GitHub!)
+ 
+ 
+--------------------------------------------------------------------------
+Uppdatera filerna (efterhand)
+--------------------------------------------------------------------------
+1) $ git add .
+ 
+2) $ git commit -m "<minor | major> : comment"
+ 
+3) $ git push
+
+     (Nu är filerna uppdaterade på GitHub!)
+
+     (Om man vill uppdatera gh-pages med, från main-branch:)
+
+4)   git switch gh-pages
+
+5)   git pull
+
+6)   git push origin gh-pages
+
+7)   git switch main
+ 
+ 
+--------------------------------------------------------------------------
+Skapa en public branch (gh-pages)
+--------------------------------------------------------------------------
+1) $ git branch
+ 
+2) $ git checkout -b gh-pages
+ 
+3) $ git branch
+ 
+4) $ git push origin gh-pages
+ 
+     (Nu är filerna kopierade till gh-pages på GitHub [public]:
+      https://[username].github.io/[repo]/)
+
+5) $ git checkout main
+
+	(Ställer tillbaka branch till main, för det vill du väl?)
+ 
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------

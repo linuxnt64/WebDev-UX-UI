@@ -1,0 +1,19 @@
+Om du har ett webrepository på GitHub, d.v.s. du har pushat ditt webprojekt
+kan du med några enkla kommandon publicera det från GitBash eller PowerShell:
+
+
+git checkout -b gh-pages
+ 
+git push origin gh-pages
+ 
+	(Nu är filerna kopierade till gh-pages på GitHub [public] och kan ses med en ny länk på formatet:
+	https://[username].github.io/[repo]/)
+
+git checkout main
+
+	(Ställer tillbaka branch till main, för det vill du väl?)
+
+Happy publishing:
+
+Staffan S
+ 
