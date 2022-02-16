@@ -1,0 +1,168 @@
+﻿
+.bonus-gift-subscriptions-block {}
+
+.bonus-gift-subscriptions-block .header-area{float: left;
+    width: 100%; margin-bottom: 55px; margin-top: 80px; }
+.bonus-gift-subscriptions-block .header-area h2{ display: inline;}
+.bonus-gift-subscriptions-block .header-area a { color: #303030; padding-left: 30px;}
+.bonus-gift-subscriptions-block .header-area a:hover, 
+.bonus-gift-subscriptions-block .header-area a:focus,
+.bonus-gift-subscriptions-block .header-area a:visited {color: #303030;}
+
+.bonus-gift-subscriptions-block .brand-image { height: 74px;width: 100%;}
+.bonus-gift-subscriptions-block .brand-image span { display: block !important;height: 100%;}
+
+.bonus-gift-subscriptions-block .brand-image span img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.bonus-gift-subscriptions-block .gift-image 
+{
+    display: table-row;
+    /*height:150px;*/
+    overflow: hidden;
+}
+
+.bonus-gift-subscriptions-block .description {height: 122px; overflow: hidden; }
+
+.bonus-gift-subscriptions-block .bonus-gift-product-list {}
+
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product { margin-bottom: 36px;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .images {float: left; width: 100%;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .description-container .description {float: right;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .mobile-clear {clear:both;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button { clear: both;margin-top: 18px;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .price { float: left;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .savings { float: right; font-weight:bold; }
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .savings .percentage-flag { float: left;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .savings .plus-free-gift { float: right; margin-left: 6px;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .view-offers { clear: both;}
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .view-offers .btn { width: 165px;}
+
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .no-product-image {height: 145px;width: 100%;background-color: #ddd;text-align: center;vertical-align: middle;overflow: hidden;display: table;  }
+.bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .no-product-image p {display: table-cell; vertical-align: middle;}
+
+@media (max-width: 320px) 
+{
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .images 
+    {
+        display: table;
+        float: left;
+        margin-left: 0;
+    }
+    .bonus-gift-subscriptions-block .savings {
+        line-height: 42px;
+        font-size: 18px;
+        margin-top: 28px;
+        margin-bottom: 12px;
+    }
+    .bonus-gift-subscriptions-block .description {
+        height: 140px;
+    }
+    .bonus-gift-subscriptions-block .header-area a {
+        padding-left: 5px;
+    }
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .price {
+        margin-top: -2px !important;
+    }
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .view-offers .btn {
+        width: 875px;
+    }
+    .bonus-gift-subscriptions-block .header-area {
+        margin-bottom: 23px;
+        margin-top: 15px;
+    }
+}
+@media (max-width: 480px) 
+{
+    /*
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .images {
+        float: left;
+        margin-left: 0;
+    }*/
+    .bonus-gift-subscriptions-block .savings {
+        line-height: 42px;
+        font-size: 18px;
+        margin-top: 28px;
+        margin-bottom: 12px;
+    }
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button {    
+        margin-top: -14px;
+    }
+    .bonus-gift-subscriptions-block .description {
+        height: 140px;
+    }
+    .bonus-gift-subscriptions-block .header-area a {
+        padding-left: 5px;
+    }
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .price {
+        margin-top: -2px !important;
+    }
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .view-offers .btn {
+        width: 875px;
+    }
+    .bonus-gift-subscriptions-block .header-area {
+        margin-bottom: 23px;
+        margin-top: 15px;
+    }
+}
+@media(min-width: 786px) 
+{
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .price {  
+        margin-top: -32px;
+    }
+        .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .view-offers .btn {
+        width: 875px;
+    }
+    .bonus-gift-subscriptions-block .header-area {
+        margin-bottom: 23px;
+        margin-top: 28px;
+    }
+}    
+@media(max-width: 992px) 
+{
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .price {  
+        margin-top: -32px;
+    }
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .view-offers .btn {
+        width: 875px;
+    }
+    .bonus-gift-subscriptions-block .header-area {
+        margin-bottom: 23px;
+        margin-top: 15px;
+    }
+    
+    .bonus-gift-subscriptions-block .brand-image { height: 42px;}
+}    
+@media (min-width: 992px) 
+{
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button { margin-top: 0;height: 145px;position: relative;}
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .price { float: none;display: block;position: absolute; bottom: 50px;}
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .savings { float: none;display: block;}
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .savings .percentage-flag { float: left;}
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .savings .plus-free-gift { float: left;}
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button .view-offers { position: absolute;bottom: 0px;}
+    .bonus-gift-subscriptions-block .description { height: 100px; }
+    .bonus-gift-subscriptions-block .brand-image { height:74px;}
+}
+
+@media (min-width:1200px)
+{
+    .bonus-gift-subscriptions-block .bonus-gift-product-list .bonus-gift-product .price-and-button { margin-top: 0;height: 145px;position: relative;}
+}
+
+.bonus-gift-subscriptions-block .savings { line-height: 42px; font-size: 18px; }
+.bonus-gift-subscriptions-block .percentage-flag { background-image: url(/Assets/Images/label-overlay.png); background-repeat: no-repeat; height: 40px; width: 100px; display: block; float: left; margin-left: 3px; padding-left: 14px; }
+.bonus-gift-subscriptions-block .currency {font-weight: bold;margin-left: 3px; margin-top: 29px;}
+.bonus-gift-subscriptions-block .currency-small {font-size: 14px;}
+.bonus-gift-subscriptions-block .currency-large {font-size: 30px;margin-left: -3px;}
+.bonus-gift-subscriptions-block .currency-small-right {margin-left: -6px;}
+
+/*@media (max-width: 768px) {
+    .bonus-gift-subscriptions-block {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+}*/

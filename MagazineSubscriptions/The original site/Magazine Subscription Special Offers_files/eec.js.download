@@ -1,0 +1,464 @@
+;
+
+var eecAjax = function (data, url) {
+    $.ajax({
+        type: 'POST',
+        async: true,
+        data: JSON.stringify(data),
+        context: 'self',
+        dataType: "json",
+        contentType: 'application/json',
+        url: url
+    });
+};
+
+var logTransactionEvent = function (messagePrefix, transaction, identifierOverride) {
+
+    var identifier = identifierOverride
+        ? identifierOverride
+        : (transaction ? transaction.Id : "");
+
+    var data = null;
+
+    try {
+        data = {
+            message: messagePrefix + " for transaction " + JSON.stringify(transaction) + ".",
+            identifier: identifier
+        };
+
+        eecAjax(data, "/Logging/LogEvent");
+    } catch(error) {
+        var orderIdentifierMessage = identifier ? " for orderIdentifier: " + identifier : "";
+
+        data = {
+            message: "Failed to log '" + messagePrefix + "' message" + orderIdentifierMessage + ".",
+            identifier: identifier,
+            loggerLevel: "Error"
+        };
+
+        eecAjax(data, "/Logging/LogEvent");
+    }
+};
+
+eec = (function (window, factory) {
+    var instance = window.eec;
+    if (instance === undefined) {
+        instance = window.eec = factory(window.jQuery, window.ga);
+    }
+    return instance;
+})(window, function ($, ga) {
+
+    var arrayFirst = function (array, fnMatch) {
+        for (var i = 0; i < array.length; i++) {
+            if (fnMatch(array[i]))
+                return array[i];
+        }
+        return null;
+    };
+
+    function EnhancedGoogleAnalytics() {
+        var self = this;
+
+        //defines the length of time to wait before the hitcallback has been unsuccessful and fallback to execution code
+        self.hitCallbackTimeout = 500;
+        //A list of all the impressions we have sent over to google
+        self.sentPromoImpressions = [];
+        self.sentProductImpressions = [];
+
+        self.checkoutVars = null;
+
+        //a function that can be set to be called before initial page view is sent
+        self.beforePageView = null;
+        //a function that can set to be called after the inital page view hit callback url is hit
+        self.afterPageView = null;
+    }
+
+    EnhancedGoogleAnalytics.prototype.initPage = function () {
+        var self = this;
+        self.collatePage();
+        if (self.beforePageView)
+            self.beforePageView.apply(this);
+
+        if (!self.afterPageView)
+            return ga('send', 'pageview');
+
+        var timer = setTimeout(function () {
+            self.afterPageView.apply(self);
+        }, self.hitCallbackTimeout);
+
+        ga('send', 'pageview', {
+            hitCallback: function () {
+                clearTimeout(timer);
+                self.afterPageView.apply(self);
+            }
+        });
+    };
+
+    EnhancedGoogleAnalytics.prototype.collatePage = function () {
+        var self = this;
+
+        var targetElemClicked = function (evt) {
+            var $target = $($(this).attr('data-ga-target'));
+            if (!$target) return;
+            if ($target.attr('data-ga-promo') !== undefined) {
+                self.promoClick($target);
+            } else {
+                self.productClick($target);
+            }
+        };
+
+        $('[data-ga-target]').off('click', targetElemClicked);
+        $('[data-ga-target]').on('click', targetElemClicked);
+
+        var eventElemClicked = function (evt) {
+            if ($(this).attr('type') === 'submit') {
+                evt.preventDefault();
+                evt.stopPropagation();
+                self.eventClick($(this), function ($elem) {
+                    if ($elem.attr('data-ga-nosubmit') === 'True') {
+                        $elem.trigger('click');
+                    } else {
+                        var $form = $elem.parents('form');
+                        if ($form.data('submitted') === false) {
+                            $form.submit();
+                        }
+                    }
+                });
+            } else {
+                self.eventClick($(this));
+            }
+
+        };
+
+        $('[data-ga-event]').off('mousedown', eventElemClicked);
+        $('[data-ga-event]').on('mousedown', eventElemClicked);
+
+        //intial page load
+        //register any impressions on page load
+        self.registerImpressions();
+
+        //On initial page load we also need to look for any product details
+        self.productDetail($('[data-ga-product-detail]'));
+    };
+
+    EnhancedGoogleAnalytics.prototype.addCheckoutStage = function (options) {
+        var self = this;
+        var items = options.items || [];
+
+        if (options.currencyCode) {
+            ga('set', 'currencyCode', options.currencyCode);
+        }
+
+        for (var i = 0; i < items.length; i++) {
+            var product = items[i];
+
+            self.addProduct(product);
+        }
+
+        ga('ec:setAction', 'checkout', {
+            'step': options.step,
+            'option': options.option
+        });
+    };
+
+    EnhancedGoogleAnalytics.prototype.addTransaction = function (transaction, identifier) {
+        var self = this;
+
+        if (transaction) {
+            logTransactionEvent("Running EnhancedGoogleAnalytics.prototype.addTransaction", transaction, identifier);
+
+            var items = transaction.items || [];
+
+            if (transaction.currencyCode) {
+                ga('set', 'currencyCode', transaction.currencyCode);
+            }
+
+            for (var i = 0; i < items.length; i++) {
+                var product = items[i];
+
+                self.addProduct(product);
+            }
+
+            ga('ec:setAction', 'purchase', transaction);
+
+            logTransactionEvent("Finished EnhancedGoogleAnalytics.prototype.addTransaction", transaction, identifier);
+
+            var data = { orderIdentifier: identifier };
+
+            eecAjax(data, "/GoogleAnalytics/SentToGoogleAnalytics");
+        }
+    };
+
+    /*
+    EnhancedGoogleAnalytics.prototype.sendCheckoutPayment = function ($elem, optionValue, cb) {
+        var self = this;
+
+        ga('set', {
+            page: '/payment-details',
+            title: 'Payment Details'
+        });
+
+        ga('ec:setAction', 'checkout', {
+            'step': 4,
+            'option': optionValue
+        });
+
+        if (cb) {
+            var timer = setTimeout(function() {
+                cb($elem, optionValue);
+            }, self.hitCallbackTimeout);
+
+            ga('send', 'pageview', {
+                hitCallback: function () {
+                    clearTimeout(timer);
+                    cb && cb($elem, optionValue);
+                }
+            });
+        } else {
+            ga('send', 'pageview');
+        }
+    };
+    */
+
+    EnhancedGoogleAnalytics.prototype.viewChange = function (url) {
+        var self = this;
+        ga('set', 'page', url);
+        self.collatePage();
+        ga('send', 'pageview');
+    };
+
+    //registerImpressions method can be called at any point to re-parse the page for any new impressions
+    EnhancedGoogleAnalytics.prototype.registerImpressions = function () {
+        var self = this;
+
+        $('[data-ga-promo]').each(function () {
+            self.addPromoImpression($(this));
+        });
+
+        $('[data-ga-product="seen"]').each(function () {
+            self.addProductImpression($(this));
+        });
+    };
+
+    EnhancedGoogleAnalytics.prototype.eventClick = function ($elem, cb) {
+        var self = this;
+        var event = self.parseEvent($elem);
+        if (cb) {
+            var timer = setTimeout(function () {
+                cb($elem);
+            }, self.hitCallbackTimeout);
+
+            event.hitCallback = function () {
+                clearTimeout(timer);
+                cb($elem);
+            };
+
+            ga('send', event);
+        } else {
+            ga('send', event);
+        }
+    };
+
+    EnhancedGoogleAnalytics.prototype.addProduct = function (product) {
+        if (product.paymentType)
+            product.dimension1 = product.paymentType;
+        if (product.directDonor)
+            product.dimension2 = product.directDonor;
+        if (product.deliveryCountry)
+            product.dimension3 = product.deliveryCountry;
+        if (product.currencyShown)
+            product.dimension4 = product.currencyShown;
+        if (product.newRenewal)
+            product.dimension5 = product.newRenewal;
+
+        ga('ec:addProduct', product);
+    };
+
+    EnhancedGoogleAnalytics.prototype.addPromoImpression = function ($elem) {
+        var self = this;
+        var promo = self.parsePromo($elem);
+        if (!promo.id && !promo.name)
+            return null;
+        if (arrayFirst(self.sentPromoImpressions, function (p) {
+            return p.id === promo.id && p.name === promo.name && p.creative === promo.creative;
+        })) {
+            return null;
+        }
+
+        ga('ec:addPromo', promo);
+        self.sentPromoImpressions.push(promo);
+        return promo;
+    };
+
+    EnhancedGoogleAnalytics.prototype.addProductImpression = function ($elem) {
+        var self = this;
+        var product = self.parseProduct($elem);
+
+        if (!product.id && !product.name)
+            return null;
+
+        //check if this impression hasn't already been registered
+        if (arrayFirst(self.sentProductImpressions, function (p) {
+            return p.id === product.id && p.name === product.name;
+        })) {
+            return null;
+        }
+
+        ga('ec:addImpression', product);
+        self.sentProductImpressions.push(product);
+
+        return product;
+    };
+
+    EnhancedGoogleAnalytics.prototype.promoClick = function ($elem) {
+        var self = this;
+
+        var promo = self.parsePromo($elem);
+        if (!promo.id && !promo.name)
+            return false;
+
+        ga('ec:addPromo', promo);
+        ga('ec:setAction', 'promo_click');
+        ga('send', 'event', 'Internal Promotions', 'click', promo.name);
+        return true;
+    };
+
+    EnhancedGoogleAnalytics.prototype.productDetail = function ($elem) {
+        var self = this;
+        var product = self.parseProduct($elem);
+        if (!product.id && !product.name)
+            return false;
+
+        self.addProduct(product);
+        ga('ec:setAction', 'detail');
+        return true;
+    };
+
+    //This method takes JSON object representing a product, returned from addToBasket service
+    EnhancedGoogleAnalytics.prototype.productAddToBasket = function (product, cb) {
+        var self = this;
+
+        var products = Object.prototype.toString.call(product) === '[object Array]' ? product : [product];
+
+        for (var i = 0; i < products.length; i++) {
+            var item = products[i];
+            if (!item.id && !item.name) continue;
+            self.addProduct(item);
+        }
+
+        var event = {
+            'hitType': 'event',
+            'eventCategory': 'Ecommerce',
+            'eventAction': 'click',
+            'eventLabel': 'add to basket'
+        };
+
+        if (cb) {
+            var timer = setTimeout(function () {
+                cb(product);
+            }, self.hitCallbackTimeout);
+
+            event.hitCallback = function () {
+                clearTimeout(timer);
+                cb(product);
+            };
+
+            ga('ec:setAction', 'add');
+            ga('send', event);
+        } else {
+            ga('ec:setAction', 'add');
+            ga('send', event);
+        }
+    };
+
+    //This method takes JSON object representing a product, returned from addToBasket service
+    EnhancedGoogleAnalytics.prototype.productRemoveFromBasket = function (product) {
+        var self = this;
+
+        if (!product || !product.id && !product.name)
+            return false;
+
+        self.addProduct(product);
+        ga('ec:setAction', 'remove');
+        ga('send', 'event', 'Ecommerce', 'click', 'remove from basket');
+        return true;
+    };
+
+    EnhancedGoogleAnalytics.prototype.productClick = function ($elem) {
+        var self = this;
+
+        var product = self.parseProduct($elem);
+        if (!product || !product.id && !product.name)
+            return false;
+
+        var action = product.list ? product.list + ' - ' + product.id : product.id;
+
+        self.addProduct(product);
+        ga('ec:setAction', 'click', { 'list': action });
+        ga('send', 'event', 'Ecommerce', 'click', action);
+        return true;
+    };
+
+    EnhancedGoogleAnalytics.prototype.parseEvent = function ($elem, hitType) {
+        var event = {
+            'hitType': hitType || 'event',
+            'eventCategory': $elem.attr('data-ga-category'),
+            'eventAction': $elem.attr('data-ga-action'),
+            'eventLabel': $elem.attr('data-ga-label')
+        };
+        var value = parseInt($elem.attr('data-ga-action'), 10);
+        if (value && !isNaN(value) && value >= 0)
+            event.eventValue = value;
+        return event;
+    };
+
+    EnhancedGoogleAnalytics.prototype.parseProduct = function ($elem) {
+        var impression = {
+            'id': $elem.attr('data-ga-id'),
+            'name': $elem.attr('data-ga-name'),
+            'list': $elem.attr('data-ga-list'),
+            'brand': $elem.attr('data-ga-brand'),
+            'category': $elem.attr('data-ga-category'),
+            'variant': $elem.attr('data-ga-variant'),
+            'position': $elem.attr('data-ga-position'),
+            'price': $elem.attr('data-ga-price')
+        };
+
+        var product = {
+            'coupon': $elem.attr('data-ga-coupon'),
+            'quantity': $elem.attr('data-ga-quantity')
+        };
+
+        //dimensions
+
+        var paymentType = $elem.attr('data-ga-paymentType');
+        var directDonor = $elem.attr('data-ga-directdonor');
+        var deliveryCountry = $elem.attr('data-ga-deliverycountry');
+        var currencyShown = $elem.attr('data-ga-currencyshown');
+        var newRenewal = $elem.attr('data-ga-newrenewal');
+
+        if (paymentType)
+            product.dimension1 = paymentType;
+        if (directDonor)
+            product.dimension2 = directDonor;
+        if (deliveryCountry)
+            product.dimension3 = deliveryCountry;
+        if (currencyShown)
+            product.dimension4 = currencyShown;
+        if (newRenewal)
+            product.dimension5 = newRenewal;
+
+        return $.fn.extend({}, impression, product);
+    };
+
+    EnhancedGoogleAnalytics.prototype.parsePromo = function ($elem) {
+        return {
+            'id': $elem.attr('data-ga-id'),
+            'name': $elem.attr('data-ga-name'),
+            'creative': $elem.attr('data-ga-creative'),
+            'position': $elem.attr('data-ga-position')
+        };
+    };
+
+    return new EnhancedGoogleAnalytics();
+});

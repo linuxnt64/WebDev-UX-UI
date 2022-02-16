@@ -1,0 +1,43 @@
+﻿.block-grid { width: 100%; }
+
+.block-grid .block-grid-item {
+    display: block;
+    position: relative;
+    float: left;
+    width: 190px;
+}
+
+.block-grid .block-grid-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.block-grid .block-grid-item a:hover {
+    text-decoration: none;
+}
+
+/*
+.block-grid .block-grid-item:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.block-grid .block-grid-item .content {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}*/
+
+.block-grid .block-grid-item .content-wrap {
+    display: table;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+}
+
+.block-grid .block-grid-item .content {
+    display: table-cell;
+    vertical-align: middle;
+}

@@ -1,0 +1,57 @@
+﻿/* Web POS WYSIWYG styles handler - Script to apply custom styles to WebPOS responsive content
+*/
+$(function() {
+    (function($, viewport) {
+        // Execute code each time window size changes
+        $(window).bind('resize', function() {
+            viewport.changed(function() {
+                applyResponsiveStyles();
+            }, 300);
+        });
+
+        function applyResponsiveStyles() {
+            var currentBreakpoint = viewport.current();
+            $(".responsive-row").each(function() {
+                applyStylesToResponsiveRow($(this), currentBreakpoint);
+            });
+
+            $(".responsive-content").each(function() {
+                applyStylesToResponsiveContent($(this), currentBreakpoint);
+            });
+        }
+
+        function applyStylesToResponsiveRow($el, currentBreakpoint) {
+            var styles = $el.attr("data-" + currentBreakpoint + "-styles");
+            if (!styles) styles = "";
+            $el.attr("style", styles);
+
+            // Apply css
+            var classes = $el.attr("data-" + currentBreakpoint + "-classes");
+
+            if (!classes) classes = "";
+            // Append the default wysiwig classes
+            classes += " row responsive-row";
+
+            // Update the classes applied to this row
+            $el.attr("class", classes);
+        }
+
+        function applyStylesToResponsiveContent($el, currentBreakpoint) {
+            var styles = $el.attr("data-" + currentBreakpoint + "-styles");
+            if (!styles) styles = "";
+            $el.attr("style", styles);
+
+            // Apply css
+            var classes = $el.attr("data-" + currentBreakpoint + "-classes");
+
+            if (!classes) classes = "";
+            // Append the default wysiwig classes
+            classes += " responsive-content";
+
+            // Update the classes applied to this row
+            $el.attr("class", classes);
+        }
+
+        applyResponsiveStyles();
+    })(jQuery, ResponsiveBootstrapToolkit);
+});

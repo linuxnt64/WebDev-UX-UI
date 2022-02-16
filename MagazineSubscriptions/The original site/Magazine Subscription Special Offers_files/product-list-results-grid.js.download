@@ -1,0 +1,275 @@
+$(function () {
+    $("[data-ga-product]").attr("data-ga-product", "seen");
+
+    if (window.eec) {
+        window.eec.collatePage();
+    }
+
+    // JSON object..
+    var defaults = {
+        MinPrice: 0,
+        MaxPrice: 0,
+        PageNo: 1,
+        PageSize: 10,
+        SortBy: 'Price',
+        OpenFacets: [],
+        ShowPriceFilter: true,
+        Categories: [],
+        ProductTypes: [],
+        PaymentTypes: [],
+        Savings: [],
+        Gifts: []
+    }
+    var settings = $("#settings").val() ? JSON.parse($("#settings").val()) : {}
+    var model = $.extend({}, defaults, settings);
+    //console.log(model);
+
+    $(function() {
+        model.OpenFacets = [];
+        $('.facet .panel-collapse.in').each(function() {
+            var facetId = parseInt($(this).find('[data-facet-id]').attr('data-facet-id'));
+            model.OpenFacets.push(facetId);
+        });
+    });
+    $(document).on("change", "[data-sort-by]", function() {
+        var sortVal = $(this).val();
+        if (model.SortBy != sortVal) {
+            model.SortBy = sortVal;
+            applyFilters();
+        }
+    });
+
+    $(document).on("click", "[data-page-number]", function() {
+        model.PageNo = $(this).data("page-number");
+        applyFilters();
+    });
+
+    $(document).on('click', '[data-view-all]', function() {
+        model.PageSize = 9999999;
+        model.PageNo = 1;
+        applyFilters();
+    });
+
+    $(document).on("click", "[data-last-page]", function() {
+        model.PageNo = model.PageNo - 1;
+        applyFilters();
+    });
+
+    $(document).on("click", "[data-next-page]", function() {
+        model.PageNo = ++model.PageNo;
+        applyFilters();
+    });
+
+    $(document).on("click", "[data-first-page]", function() {
+        model.PageNo = 1;
+        applyFilters();
+    });
+
+    $(document).on("show.bs.collapse", '.facet .panel-collapse', function() {
+        var facetId = parseInt($(this).find('[data-facet-id]').attr('data-facet-id'));
+        var index = model.OpenFacets.indexOf(facetId);
+        var accordId = $(this).attr('id');
+        var panelhead = $('[href="#' + accordId + '"]');
+        panelhead.addClass("in");
+        panelhead.find(".small").css("display", "inline");
+        if (index < 0)
+            model.OpenFacets.push(facetId);
+    });
+
+    $(document).on("hide.bs.collapse", '.facet .panel-collapse', function() {
+        var facetId = parseInt($(this).find('[data-facet-id]').attr('data-facet-id'));
+        var index = model.OpenFacets.indexOf(facetId);
+        var accordId = $(this).attr('id');
+        var panelhead = $('[href="#' + accordId + '"]');
+        panelhead.removeClass("in");
+        panelhead.find(".small").css("display", "none");
+        if (index > -1)
+            model.OpenFacets.splice(index, 1);
+    });
+
+    $(document).on("show.bs.collapse hide.bs.collapse", '#priceFilter', function() {
+        model.ShowPriceFilter = !model.ShowPriceFilter;
+    });
+
+    $("[data-clear-facet-id]").on("click", function(evt) {
+        evt.stopPropagation();
+        var facetId = parseInt($(this).attr("data-clear-facet-id"));
+
+        if (facetId == 1) model.Categories = [];
+        if (facetId == 2) model.ProductTypes = [];
+        if (facetId == 3) model.PaymentTypes = [];
+        if (facetId == 4) model.Savings = [];
+        if (facetId == 5) model.Gifts = [];
+        applyFilters();
+    });
+
+    $(document).on("click", "#resetPriceFilter", function(evt) {
+        evt.stopPropagation();
+        model.MaxPrice = 99999;
+        model.MinPrice = 0;
+        model.PageNo = 1;
+        applyFilters();
+    });
+
+    $("[data-remove-all-facets]").on("click", function(evt) {
+        evt.stopPropagation();
+        model.Categories = [];
+        model.ProductTypes = [];
+        model.PaymentTypes = [];        
+        model.Savings = [];
+        model.Gifts = [];
+        applyFilters();
+    });
+
+    $(document).on("click", "[data-remove-facet-id]", function() {
+        var facetId = $(this).data('remove-facet-id');
+        var valueId = $(this).data('facet-value-id');
+
+        if (facetId == 1) { //CATEGORY
+            var index = model.Categories.indexOf(valueId);
+            if (index > -1)
+                model.Categories.splice(index, 1);
+        }
+
+        if (facetId == 2) { //Product Type
+            var index = model.ProductTypes.indexOf(valueId);
+            if (index > -1)
+                model.ProductTypes.splice(index, 1);
+        }
+
+        if (facetId == 3) { //Product Type
+            var index = model.PaymentTypes.indexOf(valueId);
+            if (index > -1)
+                model.PaymentTypes.splice(index, 1);
+        }
+
+        if (facetId == 4) { //Savings
+            var index = model.Savings.indexOf(valueId);
+            if (index > -1)
+                model.Savings.splice(index, 1);
+        }
+
+        if (facetId == 5) { //Free gift
+            var index = model.Gifts.indexOf(valueId);
+            if (index > -1)
+                model.Gifts.splice(index, 1);
+        }
+
+        model.PageNo = 1;
+        applyFilters();
+    });
+
+    $("[data-facet-id]").on("click", function () {
+
+        var facetName = $(this).data("facet-name");
+        var selectedId = $(this).data("facet-id");
+        var selectedValueId = $(this).data("value-id");
+
+        //Have to be a bit explicit about this as the attribute/facet values may not necessarily be unique ids
+
+        if (selectedId == 1 || facetName == 'Category') { //Category
+            var index = model.Categories.indexOf(selectedValueId);
+            if (index == -1)
+                model.Categories.push(selectedValueId);
+            else
+                model.Categories.splice(index, 1);
+
+        }
+
+        if (selectedId == 2 || facetName == 'Product Type') { //Product Type
+            var index = model.ProductTypes.indexOf(selectedValueId);
+            if (index == -1)
+                model.ProductTypes.push(selectedValueId);
+            else
+                model.ProductTypes.splice(index, 1);
+        }
+
+        if (selectedId == 3 || facetName == 'Payment Type') { //Product Type
+            var index = model.PaymentTypes.indexOf(selectedValueId);
+            if (index == -1)
+                model.PaymentTypes.push(selectedValueId);
+            else
+                model.PaymentTypes.splice(index, 1);
+        }
+
+        if (selectedId == 4 || facetName == 'Savings') { //Savings
+            var index = model.Savings.indexOf(selectedValueId);
+            if (index == -1)
+                model.Savings.push(selectedValueId);
+            else
+                model.Savings.splice(index, 1);
+        }
+        if (selectedId == 5 || facetName == 'Free Gift') { //Free Gift
+            var index = model.Gifts.indexOf(selectedValueId);
+            if (index == -1)
+                model.Gifts.push(selectedValueId);
+            else
+                model.Gifts.splice(index, 1);
+        }
+
+        model.PageNo = 1;
+        $(this).off();
+        applyFilters();
+    });
+
+    var symbol = $("#price-slider").data("currency-character");
+    var multiplier = $("#price-slider").data("multiplier");
+    var min = parseFloat($("#price-slider").data("min"), 2);
+    var max = parseFloat($("#price-slider").data("max"), 2);
+
+    var values = [model.MinPrice * multiplier, model.MaxPrice * multiplier];
+
+    if (values[0] >= min && values[0] <= max)
+        $('#min').html("<span class='currency currency-small'>" + symbol + "</span><span class='currency currency-large'>" + Math.round(values[0]) + "</span>");
+    if (values[1] <= max && values[1] >= min)
+        $('#max').html("<span class='currency currency-small'>" + symbol + "</span><span class='currency currency-large'>" + Math.round(values[1]) + "</span>");
+
+    $("#price-slider").slider({
+        range: true,
+        min: min,
+        max: max,
+        values: values,
+        step: 1, 
+        slide: function(event, ui) {
+            $("[data-selected-min-range]").html(symbol + " " + Math.round(ui.values[0]));
+            $("[data-selected-max-range]").html(symbol + " " + Math.round(ui.values[1]));
+            var delay = function() {
+                $('#min').html("<span class='currency currency-small'>" + symbol + "</span><span class='currency currency-large'>" + ui.values[0] + "</span>").position({
+                    my: 'center top',
+                    at: 'center bottom',
+                    of: $('#price-slider .ui-slider-handle:first'),
+                    offset: "0, 10"
+                }).css("top", "11px");
+                $('#max').html("<span class='currency currency-small'>" + symbol + "</span><span class='currency currency-large'>" + ui.values[1] + "</span>").position({
+                    my: 'center top',
+                    at: 'center bottom',
+                    of: $('#price-slider .ui-slider-handle:last'),
+                    offset: "0, 10"
+                }).css("top", "11px");
+            };
+            setTimeout(delay, 5);
+        },
+        stop: function(event, ui) {
+            var selectedMin = parseFloat(ui.values[0] / multiplier, 2).toFixed(2);
+            var selectedMax = parseFloat(ui.values[1] / multiplier, 2).toFixed(2);
+            console.log(selectedMin);
+            console.log(selectedMax);
+            model.MinPrice = Math.min(selectedMin, selectedMax);
+            model.MaxPrice = Math.max(selectedMin, selectedMax);
+            model.PageNo = 1;
+            applyFilters();
+        }
+    });
+
+    function createQueryString() {
+        var qs = $.param(model, true);
+        console.log(qs);
+        return qs;
+    }
+
+    function applyFilters() {
+        $("[data-loading]").show();
+        var queryString = createQueryString();
+        window.location.href = window.location.pathname + "?" + queryString;
+    }
+});

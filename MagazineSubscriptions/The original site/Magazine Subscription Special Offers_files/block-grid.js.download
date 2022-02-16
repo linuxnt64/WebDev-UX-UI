@@ -1,0 +1,89 @@
+﻿
+        function BlockGrid(element, options) {
+            var _ = this;
+
+            var defaults = {
+                bestfit: true,
+                minspacing: 10,
+                blockselector: 'div',
+                container: null
+            };
+
+            _.settings = $.extend({}, defaults, options);
+
+            _.$element = $(element);
+            _.$container = _.settings.container && $(_.settings.container).length ? $(_.settings.container) : _.$element.parent();
+
+            var $blocks = _.$element.children(_.settings.blockselector);
+            _.$blocks = $blocks.length ? $blocks : _.$element.children();
+
+            $(window).on('resize', function() {
+                var maxwidth = _.$container.getBoundingClientRect ? Math.floor(_.$container[0].getBoundingClientRect().width) : _.$container.width();
+                var blockwidth = _.$blocks.width();
+
+                var gap = _.settings.minspacing;
+                var blocksPerRow = Math.floor(maxwidth / (blockwidth + gap));
+
+                var $visibleBlocks = _.$blocks.filter(':visible');
+                /*
+                if (_.settings.bestfit) {
+                var maxX = 0;
+                $visibleBlocks.each(function() {
+                maxX = Math.max($(this).find('.content').children().width(), maxX);
+                });
+                blocksPerRow = maxX;
+                $visibleBlocks.width(maxX);
+                }
+                */
+                if (_.settings.bestfit) {
+
+                    var margin = _.settings.minspacing;
+                    var space = maxwidth - blockwidth;
+
+                    var count = Math.floor(space / (blockwidth + margin));
+                    count = count < $visibleBlocks.length ? count : $visibleBlocks.length - 1;
+                    var remainder = space - ((blockwidth + margin) * count);
+                    gap = Math.floor(margin + (remainder / count));
+                    blocksPerRow = count + 1;
+                }
+
+                //Equalize height amongst blocks
+                var maxY = 0;
+                $visibleBlocks.each(function() {
+                    maxY = Math.max($(this).children().height(), maxY);
+                });
+                $visibleBlocks.css('height', maxY);
+
+                var rowcount = 1;
+
+                $visibleBlocks.each(function(ix, b) {
+                    var marginRight = ((ix + 1) % (blocksPerRow)) == 0 ? 0 : gap;
+                    $(b).css({
+                            'marginRight': _.settings.bestfit ? marginRight : gap,
+                            'marginBottom': _.settings.minspacing
+                        })
+                        .attr('data-row', rowcount);
+
+                    if (marginRight == 0)
+                        rowcount++;
+                });
+                _.rowcount = rowcount;
+            }).trigger('resize');
+        }
+
+        $.fn.blockgrid = function() {
+            var _ = this;
+            var opt = arguments[0];
+            var args = Array.prototype.slice.call(arguments, 1);
+
+            for (var i = 0; i < _.length; i++) {
+                if (typeof opt == "object" || typeof opt == "undefined")
+                    _[i].blockgrid = new BlockGrid(_[i], opt);
+                else {
+                    var val = _[i].blockgrid[opt].apply(_[i].blockgrid, args);
+                    if (typeof val != "undefined") return val;
+                }
+            }
+            return _;
+        }
+

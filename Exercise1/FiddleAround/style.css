@@ -1,0 +1,104 @@
+/* ==================================== BODY ================================*/
+
+qwerty {
+    margin:0;
+    padding : 0;
+}
+
+body {
+    background-color:#EEE;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body h1 {
+    padding : 20px 0;
+    text-align: center;
+}
+ 
+body h2{
+   
+}
+/* ------------------------------------ HEADER ------------------------------*/
+header {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+header h1 {  
+    margin:0;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:24pt;
+    background-color:darkslateblue; /*(48, 96, 128)*/
+    color:bisque;
+    letter-spacing: 3pt;
+}
+
+/* . . . . . . . . . . . . . . . . . . NAV  . . . . . . . . . . . . . . . .  */
+
+nav {
+    display:flex;
+    background-color: bisque;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+}
+
+nav a {
+    text-decoration: none;
+    color:darkgreen;
+}
+
+nav a :visited {
+}
+/* ------------------------------------ MAIN --------------------------------*/
+
+main {
+    background-color: #EEA;
+    padding: 30px;
+}
+
+.firstSection {
+    /* No formatting - just to have a comparation */
+}
+.firstSection h1{
+    /* almost no formatting - just to have a comparation */
+    background-color:#DEE ;
+}
+
+.secondSection{
+    display:grid;
+    grid-template-columns: 3fr 3fr 2fr;
+    column-gap: 3%;
+}
+.secondSection header{
+    grid-column: 1 / span 3;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 6pt;
+}
+
+.secondSection header h1{
+    font-size:large;
+        padding:5px;
+}
+
+.secondSection article h2{
+    text-align: center;
+}
+.secondSection aside{
+    font-size: small;
+    border-style: dashed;
+    border-color: #1a9453;
+    border-width: 2px;
+    border-radius: 0.75rem;
+}
+.secondSection aside h2 {
+    margin: 13%;
+    text-align: center;
+}
+
+/* ------------------------------------ FOOTER  -----------------------------*/
+
+
+footer {
+    
+}

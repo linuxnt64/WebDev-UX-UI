@@ -1,0 +1,98 @@
+ /* Main Menu */
+.main-menu .navbar li a, .main-menu .navbar .fa, .main-menu .navbar-link { color: black;}
+
+/* Heights/Styles on menu */
+.main-menu .navbar-hover:hover { background: #dbdbdb;}
+.main-menu .navbar-header .navbar-toggle { padding: 0;margin: 0;line-height: 48px;padding-left: 10px;padding-right: 10px;font-size: 18px; }
+
+
+/* Tweaks */
+.main-menu .navbar { margin-bottom: 0;}
+.main-menu .navbar-link { height: 50px;line-height: 50px;} /* Align links so that the text is vertically centered */
+.main-menu .navbar-link i { font-size: 20px;margin-right: 5px;} /* Increase size of font awesome icons within links */
+.main-menu .navbar-toggle-nav { float: left;} /* Make sure the mobile menu stays on the left hand side */
+.main-menu .dropdown-menu-align-left { right: auto;left: 0; } /* Force the user dropdown menu to be aligned on the left rather than the right */
+.main-menu .navbar-brand { height: auto; } /* Don't force a height on the brand section, since it messes up WYSWIWYG styling */
+.main-menu .navbar-brand p { margin: 0;} /* Remove default margin on P tags to prevent the brand area growing too tall */
+.main-menu #bs-navbar-menu { padding: 0;} /* Workaround to get menu aligned flush to left hand side */
+.main-menu #bs-navbar-menu .navbar-nav { margin: 0;} /* Workaround to counter the above workaround, preventing scrollbars when viewing the menu in mobile view */
+
+
+@media(max-width:767px) {
+    .main-menu .navbar .navbar-header { width: 100%;} /* Stretch the navbar header 100% for mobile view */
+    .main-menu .navbar-collapse { width: 100%;} /* Stretch the menu items to 100% for mobile view */
+}
+
+@media(min-width:768px) 
+{
+    .main-menu ul.nav li.dropdown:hover > ul.dropdown-menu { display: block; } /* Expand the menu on hover for all non mobile views */
+    .main-menu .navbar-form { padding: 0;} /* Decrease form padding on non mobile views */
+}
+
+/* Footer */
+/*
+#footer { position: relative;}
+#footer .footer { height: 150px;padding-bottom:50px;}
+#footer .copyright { position: absolute;bottom: 0;width: 100%;height: 50px;background: black;line-height: 50px;color: #818080;text-align: center;}
+
+#footer .footer .footer-links {color: #fefefe; }
+#footer .footer .footer-links a, 
+#footer .footer .footer-links span { color: #fefefe;}
+#footer .footer .footer-links .footer-link-header {border-bottom: 1px solid #fefefe;margin-bottom: 10px;}
+#footer .footer .footer-links .footer-link-header h4 { margin-bottom: 8px; }
+#footer .footer .footer-links ul {list-style-type: none;}
+#footer .footer .footer-links ul {margin-left: 0;padding: 0;}
+*/
+
+/* left Nav */
+.left-navigation ul { padding-left: 20px;}
+.left-navigation a.active { font-weight: bold;}
+
+/* Radio Buttons */
+.radio-inline label { font-weight: normal;cursor: pointer;padding-left: 20px;}
+.radio-inline { cursor: pointer;}
+
+/* Validation */
+input.input-validation-error,
+textarea.input-validation-error,
+select.input-validation-error
+{
+    background: #FEF1EC;
+    border: 1px solid #CD0A0A;
+}
+.field-validation-error { color: #CD0A0A; }
+
+/* No Image image */
+.no-image { vertical-align: middle; }
+
+/* Paging */
+.paging .page-info { line-height: 32px;}
+.paging .paging-actions .btn.selected { background: #3276b1;color: #fff;}
+.paging .paging-actions a { padding: 6px;}
+.paging .row { margin-bottom: 5px;}
+.paging .pagination { margin: 0;float: right;}
+.paging .pagination li { cursor: pointer;}
+.paging .pagination li.disabled { cursor: auto;}
+.paging .pagination li.disabled a {cursor:auto; }
+.paging  hr { margin-top:10px;margin-bottom: 10px;}
+
+/* Checkout Header */
+.checkout-header div.heading { padding-left: 3px;padding-right: 3px;}
+.checkout-header div.heading div {width: 100%;height: 60px;line-height: 60px;text-align: center; background: #c0c0c0;color: white;}
+.checkout-header div.heading div span { display: inline-block; vertical-align: middle; line-height: normal;padding: 0px;font-size: 15px;}
+.checkout-header .heading.active div { background: white;color: #c0c0c0;border: 1px solid #c0c0c0; }
+
+/* Checkout Footer */
+.checkout-footer { margin-bottom: 20px;}
+
+/* header */
+.header hr { margin-top: 0;margin-bottom: 10px;}
+
+#pageModal .glyphicon {
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+#pageModal #pageModalTitle {
+    font-size: 12pt;
+}

@@ -1,0 +1,73 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:rgb(220, 230, 235);
+}
+
+body h1 {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+body h2 {
+    font-size: medium;
+    font-weight: bolder;
+}
+
+body a {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    
+    margin-left:4em;
+}
+
+aside {
+    border: 2px solid lightgray;
+    margin: auto;
+    float: left;
+}
+
+aside h1 {
+    margin: 0.5em;
+    font-size: 0.85em;
+}
+
+aside p {
+    margin: 0.5em;
+}
+
+.centerSection {
+
+}
+.cardSpace {
+        display:grid ;
+        ;
+        max-width:max-content;
+        
+}
+
+/* ---------- */
+.card {
+    border: 1px solid lightgray;
+
+}
+
+.card img {
+    width: 200px ;
+}
+/* ---------- */
+
+.centerFooter {
+    background-color: inherit;
+}
+
+footer {
+    padding: 10rem;
+    background-color: rgb(225, 225, 225)!important;
+    display: grid;
+   }
+
+footer article {
+
+}

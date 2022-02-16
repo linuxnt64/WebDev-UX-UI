@@ -1,0 +1,64 @@
+﻿;(function($) {
+
+    var requestImage = function(originalSrc, size, cb) {
+        var image = new Image();
+        $(image).on('load', function() {
+            var tag = document.createElement('img');
+            tag.setAttribute('source-width', image.width);
+            tag.setAttribute('source-height', image.height);
+            tag.setAttribute('src', request);
+            cb && cb(tag);
+            delete image; //remove any pointers to image object for garbage collection
+        });
+
+        var request = originalSrc + "?p=" + size;
+        image.src = request;
+    };
+    
+    function ResponsiveImage(element, options) {
+        var _ = this;
+        _.$element = $(element);
+        _.$container = options.container && $(options.container).length ? $(options.container) : _.$element.parent();
+        _.ratio = Math.floor(window.devicePixelRatio);
+        _.breakpoints = options.breakpoints || [320, 768, 992, 1200, 1920];
+
+        $(window).on('resize', function() {
+            var maxwidth = _.$container[0].getBoundingClientRect ? Math.floor(_.$container[0].getBoundingClientRect().width) : _.$container.width();
+
+            var oldBp = _.$element.attr('data-img-bp');
+            var bp = _.breakpoints[_.breakpoints.length - 1];
+            for (var i in _.breakpoints) {
+                if (maxwidth < _.breakpoints[i]) {
+                    bp = _.breakpoints[i] * _.ratio;
+                    break;
+                }
+            }
+            if (bp == oldBp) return;
+            var imgSrc = options.srcSelector ? options.srcSelector.call(element) : _.$element.attr('data-img-src');
+            if (!imgSrc) return;
+
+            _.$element.attr('data-img-bp', bp);
+            requestImage(imgSrc, bp, function(tag) {
+                options.onimagechanged.call(element, tag);
+            }, maxwidth);
+        }).trigger('resize');
+    }
+    
+
+    $.fn.responsiveImage = function() {
+        var _ = this;
+        var opt = arguments[0];
+        var args = Array.prototype.slice.call(arguments, 1);
+
+        for (var i = 0; i < _.length; i++) {
+            if (typeof opt == "object" || typeof opt == "undefined")
+                _[i].responsiveImage = new ResponsiveImage(_[i], opt);
+            else {
+                var val = _[i].responsiveImage[opt].apply(_[i].responsiveImage, args);
+                if (typeof val != "undefined") return val;
+            }
+        }
+        return _;
+    }
+
+})(jQuery)
