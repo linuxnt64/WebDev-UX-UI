@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock up from BBC Mag site</title>
+    <title>Mock-up from BBC Mag site</title>
     <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
     <header>
-        <h1>Account - <img src="./img/buy-subs-logo.png"> - searchbox - Cart(sum)</h1>
+        <div class="pageHeading">
+            <span>Account</span><img src="./img/buy-subs-logo.png"><span>searchbox</span><span>Cart(sum)</span>
+        </div>
         <nav>
-            <ul>
-                <a href="#">Subscriptions</a>
-                <a href="#">Special Editions</a>
-                <a href="#">Renew your Magazine Subscription</a>
-                <a href="#">Back Issues</a>
-                <a href="#">Merchandise</a>
-                <a href="#">Gift Subscriptions</a>
-            </ul>
+            <a href="#">Subscriptions</a>
+            <a href="#">Special Editions</a>
+            <a href="#">Renew your Magazine Subscription</a>
+            <a href="#">Back Issues</a>
+            <a href="#">Merchandise</a>
+            <a href="#">Gift Subscriptions</a>
         </nav>
+        <hr>
     </header>
-    
     <main>
         <aside>
             <h1 class="aside_h1">Category</h1>
@@ -44,7 +44,6 @@
             </p>
         </aside>
         <section class="centerSection">
-            <hr>
             <h1>Magazine Subscription Special Offers</h1>
             <header class="centerHeader">
                 <div>Showing 1-2 of 2 <a href="#">View All&nbsp;
@@ -56,23 +55,27 @@
                             <option value="descending">Sort By: Price Descending</option>
                         </select>
                         <a href="#">Previous </a><span>&nbsp;&nbsp;&nbsp;</span>
-                        <a href="#">&nbsp;&nbsp;Next</a><br></div>
-                        
+                        <a href="#">&nbsp;&nbsp;Next</a><br>
+                </div>
+                <hr>
             </header>
             <section class="cardSpace">
                 <article class="card">
                     <div><img src="./img/hist.jpg" alt="BBC History Magazine front page"></div>
-                    <h2>Card heading</h2>
-                    <div>price<span>btnOffers</span></div>
+                    <h2>BBC History Magazine<br> Subscription</h2>
+                    <div><strong>€<span class="bigFontInline">72</span>.00</strong> <a href="#" class="lnkOffers">View
+                            Offers</a></div>
                 </article>
                 <article class="card">
                     <div><img src="./img/hrev.jpg" alt="BBC History Revealed Magazine front page"></div>
-                    <h2>Card heading</h2>
-                    <div>price<span>btnOffers</span></div>
+                    <h2>BBC History Revealed<br>Magazine Subscription</h2>
+                    <div><strong>€<span class="bigFontInline">68</span>.00</strong> <a href="#" class="lnkOffers">View
+                            Offers</a></div>
                 </article>
-           </section>
+            </section>
+            <hr>
             <div class="centerFooter">
-                <div>Showing 1-2 of 2 <a href="#">View All&nbsp;
+                <p>Showing 1-2 of 2 <a href="#">View All&nbsp;
                         <select name="cbSorting_btm">
                             <option value="saab">Sort By: Most popular</option>
                             <option value="mercedes">Sort By: A-Z</option>
@@ -81,25 +84,49 @@
                             <option value="descending">Sort By: Price Descending</option>
                         </select>
                         <a href="#">Previous</a>
-                        <a href="#">&nbsp;&nbsp;Next</a></div>
+                        <a href="#">&nbsp;&nbsp;Next</a>
+                </p>
             </div>
         </section>
     </main>
     <footer>
-        <grid>
+        <section class="links">
             <article>
-                <h2>About us</h2>
-                <a href="#">About us</a><a href="#">Privacy policy</a><a href="#">Terms&conditions</a><a href="#">Cookies policy</a>
-                <a href="#">Become an affilate</a><a href="#">Pricing Information</a><a href="#">Immediate.co.uk</a>
-                <a href="#">Latest Magazine Offers</a><a href="#">Manage Cookies</a>
+                <a href="#">
+                    <h2>About us</h2>
+                </a>
+                <div><a href="#">Privacy policy</a></div>
+                <div><a href="#">Terms&conditions</a></div>
+                <div><a href="#">Cookies policy</a></div>
+                <div><a href="#">Become an affilate</a></div>
+                <div><a href="#">Pricing Information</a></div>
+                <div><a href="#">Immediate.co.uk</a></div>
+                <div><a href="#">Latest Magazine Offers</a></div>
+                <div><a href="#">Manage Cookies</a></div>
             </article>
             <article>
-                <a href="#">Manage Your Account</a>
-                <a href="#">Login</a>
-                <a href="#">Register</a>
-                <a href="#">Renew Your Subscription</a>
+                <a href="#">
+                    <h2>Manage Your Account</h2>
+                </a>
+                <div><a href="#">Login</a></div>
+                <div><a href="#">Register</a></div>
+                <div><a href="#">Renew Your Subscription</a></div>
             </article>
-        </grid>
+            <article>
+                <a href="#">
+                    <h2>Customer Services</h2>
+                </a>
+                <div><a href="#">Contact Us</a></div>
+                <div><a href="#">FAQs</a></div>
+            </article>
+            <article>
+                <div><img src="./img/directDebit.png" alt="directDebit.png"></div>
+            </article>
+            <div><img src="./img/paypal.png" alt="paypal.png"></div>
+            <div><img src="./img/mastercard.png" alt="mastercard.png"></div>
+            <div><img src="./img/visa.png" alt="visa.png"></div>
+            </article>
+        </section>
     </footer>
 </body>
 

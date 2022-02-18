@@ -1,11 +1,31 @@
-body{
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    --bgColor: rgb(255, 255, 255);
+    --textColor: rgb(70, 70, 70);
+    --hoverColor: rgb(47, 47, 209);
+    --footerBgColor: rgb(225, 225, 225);
+    --cardH1Color: rgb(244, 244, 244);
+  }
+
+/* ---------------------------------- body ------------------------------------- */
+
+body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color:rgb(220, 230, 235);
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    display: flex;
+    flex-direction: column;
+    min-height: 110vh;
 }
 
 body h1 {
     font-size: 1.5em;
     font-weight: bolder;
+    color: rgb(48, 48, 48);
 }
 
 body h2 {
@@ -13,19 +33,66 @@ body h2 {
     font-weight: bolder;
 }
 
-body a {
+body a, body a:visited {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: grey;
 }
+
+body a:hover {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: midnightblue;
+}
+
+/* ---------------------------------- header------------------------------------ */
+
+header {
+    margin: 1rem;
+}
+
+.pageHeading {
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr 1fr;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 6rem;
+    font-family: Arial-narrow;
+    font-size: medium;
+    font-weight: bolder;
+    color: var(--textColor);
+}
+
+nav a, nav a:visited {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+nav a:hover {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: var(--hoverColor);
+}
+
+/* ---------------------------------- main ------------------------------------- */
 
 main {
-    
-    margin-left:4em;
+    background-color: rgb(253, 253, 253);
+    margin-left: 7vw;
+    display: flex;
 }
 
+/* ............................................. */
 aside {
     border: 2px solid lightgray;
-    margin: auto;
-    float: left;
+    padding-right: 7vw;
+
 }
 
 aside h1 {
@@ -37,37 +104,58 @@ aside p {
     margin: 0.5em;
 }
 
+/* ---------------------------------- center ----------------------------------- */
 .centerSection {
+    margin: 2rem 8rem;
+    
 
 }
+
 .cardSpace {
-        display:grid ;
-        ;
-        max-width:max-content;
-        
+    display: flex;
+    flex-wrap: wrap;
+    max-width: max-content;
 }
 
-/* ---------- */
-.card {
-    border: 1px solid lightgray;
 
+.card {
+    margin: 2em;
 }
 
 .card img {
-    width: 200px ;
+    width: 200px;
 }
-/* ---------- */
 
-.centerFooter {
-    background-color: inherit;
+.card h2 {
+    background-color: var(--cardH1Color);
+    padding: 1rem;
+    border-bottom: 3px solid var(--footerBgColor);
 }
+
+.bigFontInline {
+    font-size: large;
+}
+
+.lnkOffers {
+    margin: 40px;
+    padding: 10px;
+    background-color: rgba(184, 25, 83, 0.999);
+    border-bottom: 3px solid rgb(117 16 53);
+    color: white;
+}
+
+/* ---------------------------------- footer ----------------------------------- */
 
 footer {
-    padding: 10rem;
-    background-color: rgb(225, 225, 225)!important;
+    background-color: var(--footerBgColor);
+    width: 100%;
+    padding: 5rem;
+    margin-top: auto;
+}
+
+.links {
     display: grid;
-   }
-
-footer article {
-
+    grid-auto-flow: column;
+    grid-column-start: auto;
+    grid-template-columns: 5fr 5fr 5fr 2fr 2fr 2fr 2fr 1fr;
 }
