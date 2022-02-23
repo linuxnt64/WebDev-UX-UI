@@ -1,10 +1,11 @@
 * {
-    margin: 0;
-    padding: 0;
+    /* margin: 0; */
+    /* padding: 0; */
 }
 
 html {
-    --bgColor: rgb(255, 255, 255);
+    --black:rgb(255, 255, 255);
+    --bgColor: var(--black);
     --textColor: rgb(70, 70, 70);
     --hoverColor: rgb(47, 47, 209);
     --footerBgColor: rgb(225, 225, 225);
@@ -19,13 +20,14 @@ body {
     color: var(--textColor);
     display: flex;
     flex-direction: column;
-    min-height: 110vh;
+    min-height: 105vh;
+    max-width: 100%;
 }
 
 body h1 {
     font-size: 1.5em;
     font-weight: bolder;
-    color: rgb(48, 48, 48);
+    color: var(--textColor);
 }
 
 body h2 {
@@ -53,14 +55,14 @@ header {
 }
 
 .pageHeading {
-    max-width: 1000px;;
     display: grid;
     grid-template-columns: 3fr 3fr 1fr 1fr;
 }
 
 nav {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap:1em;
     margin: 1rem 6rem;
     font-family: Arial-narrow;
     font-size: medium;
@@ -81,19 +83,28 @@ nav a:hover {
     color: var(--hoverColor);
 }
 
-/* ---------------------------------- main ------------------------------------- */
-
+/* ---------------------------------- main & wrap ------------------------------ */
 main {
     background-color: rgb(253, 253, 253);
-    margin-left: 7vw;
-    display: flex;
+    display:flex;
+    margin-left: 0vw;
+    justify-content: center;
+}
+.wrap {
+    flex-basis: 1;
+    width: 900px;
+    display:flex;
+    flex-direction: row;
 }
 
 /* ............................................. */
 aside {
-    border: 2px solid lightgray;
-    padding-right: 7vw;
+width: 25%;
+}
 
+aside .category-container {
+    FONT-WEIGHT: 100;
+    border: 2px solid lightgray;
 }
 
 aside h1 {
@@ -107,9 +118,7 @@ aside p {
 
 /* ---------------------------------- center ----------------------------------- */
 .centerSection {
-    margin: 2rem 8rem;
-    
-
+    margin: 1rem 1rem;
 }
 
 .cardSpace {
@@ -134,7 +143,7 @@ aside p {
 }
 
 .bigFontInline {
-    font-size: large;
+    font-size:xx-large;
 }
 
 .lnkOffers {

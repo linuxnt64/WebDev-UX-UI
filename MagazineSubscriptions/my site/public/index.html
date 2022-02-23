@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mock-up from BBC Mag site</title>
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://kit.fontawesome.com/124ac6c2b5.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <header>
         <div class="pageHeading">
-            <span>Account</span><img src="./img/buy-subs-logo.png"><span>searchbox</span><span>Cart(sum)</span>
+            <span><i class="fas fa-user"></i> Account</span><img src="./img/buy-subs-logo.png"><span><i class="fas fa-search"></i> Searchbox</span><span><i class="fas fa-shopping-cart"></i> 0 €</span>
         </div>
         <nav>
             <a href="#">Subscriptions</a>
@@ -24,70 +23,76 @@
         <hr>
     </header>
     <main>
-        <aside>
-            <h1 class="aside_h1">Category</h1>
-            <p class="chkbox">
-                <input type="checkbox" checked="checked">
-                <label>All</label>
-            </p>
-            <p class="chkbox">
-                <input type="checkbox">
-                <label>For Men</label>
-            </p>
-            <p class="chkbox">
-                <input type="checkbox">
-                <label>For Women</label>
-            </p>
-            <p class="chkbox">
-                <input type="checkbox">
-                <label>History</label>
-            </p>
-        </aside>
-        <section class="centerSection">
-            <h1>Magazine Subscription Special Offers</h1>
-            <header class="centerHeader">
-                <div>Showing 1-2 of 2 <a href="#">View All&nbsp;
-                        <select name="cbSorting_top">
-                            <option value="popular">Sort By: Most popular</option>
-                            <option value="a2z">Sort By: A-Z</option>
-                            <option value="z2a">Sort By: Z-A</option>
-                            <option value="ascending">Sort By: Price Ascending</option>
-                            <option value="descending">Sort By: Price Descending</option>
-                        </select>
-                        <a href="#">Previous </a><span>&nbsp;&nbsp;&nbsp;</span>
-                        <a href="#">&nbsp;&nbsp;Next</a><br>
+        <div class="wrap">
+            <aside>
+                <div class="category-container">
+                    <h1 class="aside_h1">Category</h1>
+                    <p class="chkbox">
+                        <input type="checkbox" checked="checked">
+                        <label>All</label>
+                    </p>
+                    <p class="chkbox">
+                        <input type="checkbox">
+                        <label>For Men</label>
+                    </p>
+                    <p class="chkbox">
+                        <input type="checkbox">
+                        <label>For Women</label>
+                    </p>
+                    <p class="chkbox">
+                        <input type="checkbox">
+                        <label>History</label>
+                    </p>
                 </div>
+            </aside>
+            <section class="centerSection">
+                <h1>Magazine Subscription Special Offers</h1>
+                <header class="centerHeader">
+                    <div>Showing 1-2 of 2 <a href="#">View All&nbsp;
+                            <select name="cbSorting_top">
+                                <option value="popular">Sort By: Most popular</option>
+                                <option value="a2z">Sort By: A-Z</option>
+                                <option value="z2a">Sort By: Z-A</option>
+                                <option value="ascending">Sort By: Price Ascending</option>
+                                <option value="descending">Sort By: Price Descending</option>
+                            </select>
+                            <a href="#">Previous </a><span>&nbsp;&nbsp;&nbsp;</span>
+                            <a href="#">&nbsp;&nbsp;Next</a><br>
+                    </div>
+                    <hr>
+                </header>
+                <section class="cardSpace">
+                    <article class="card">
+                        <div><img src="./img/hist.jpg" alt="BBC History Magazine front page"></div>
+                        <h2>BBC History Magazine<br> Subscription</h2>
+                        <div><strong>€<span class="bigFontInline">72</span>.00</strong> <a href="#"
+                                class="lnkOffers">View
+                                Offers</a></div>
+                    </article>
+                    <article class="card">
+                        <div><img src="./img/hrev.jpg" alt="BBC History Revealed Magazine front page"></div>
+                        <h2>BBC History Revealed<br>Magazine Subscription</h2>
+                        <div><strong>€<span class="bigFontInline">68</span>.00</strong> <a href="#"
+                                class="lnkOffers">View
+                                Offers</a></div>
+                    </article>
+                </section>
                 <hr>
-            </header>
-            <section class="cardSpace">
-                <article class="card">
-                    <div><img src="./img/hist.jpg" alt="BBC History Magazine front page"></div>
-                    <h2>BBC History Magazine<br> Subscription</h2>
-                    <div><strong>€<span class="bigFontInline">72</span>.00</strong> <a href="#" class="lnkOffers">View
-                            Offers</a></div>
-                </article>
-                <article class="card">
-                    <div><img src="./img/hrev.jpg" alt="BBC History Revealed Magazine front page"></div>
-                    <h2>BBC History Revealed<br>Magazine Subscription</h2>
-                    <div><strong>€<span class="bigFontInline">68</span>.00</strong> <a href="#" class="lnkOffers">View
-                            Offers</a></div>
-                </article>
+                <div class="centerFooter">
+                    <p>Showing 1-2 of 2 <a href="#">View All&nbsp;
+                            <select name="cbSorting_btm">
+                                <option value="saab">Sort By: Most popular</option>
+                                <option value="mercedes">Sort By: A-Z</option>
+                                <option value="audi">Sort By: Z-A</option>
+                                <option value="ascending">Sort By: Price Ascending</option>
+                                <option value="descending">Sort By: Price Descending</option>
+                            </select>
+                            <a href="#">Previous</a>
+                            <a href="#">&nbsp;&nbsp;Next</a>
+                    </p>
+                </div>
             </section>
-            <hr>
-            <div class="centerFooter">
-                <p>Showing 1-2 of 2 <a href="#">View All&nbsp;
-                        <select name="cbSorting_btm">
-                            <option value="saab">Sort By: Most popular</option>
-                            <option value="mercedes">Sort By: A-Z</option>
-                            <option value="audi">Sort By: Z-A</option>
-                            <option value="ascending">Sort By: Price Ascending</option>
-                            <option value="descending">Sort By: Price Descending</option>
-                        </select>
-                        <a href="#">Previous</a>
-                        <a href="#">&nbsp;&nbsp;Next</a>
-                </p>
-            </div>
-        </section>
+        </div>
     </main>
     <footer>
         <section class="links">
