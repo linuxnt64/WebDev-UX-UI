@@ -1,0 +1,46 @@
+        <section class="navbars">
+            <div class="social-bar">
+                <div class="soc-item-first"><a href="#">info@domain.com</a></div>
+                <div class="soc-item"><a href="#">Facebook</a></div>
+                <div class="soc-item"><a href="#">Twitter</a></div>
+                <div class="soc-item"><a href="#">LinkedIn</a></div>
+                <div class="soc-item"><a href="#">YouTube</a></div>
+            </div>
+            <nav class="menubar">
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </nav>
+        </section>
+
+
+        
+.navbars {
+    display:flex;
+    flex-direction: column;
+    flex-grow:1;
+}
+
+.social-bar {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    padding-left:0em;
+    color:var(--menu-color);
+    font-size: 11pt;
+    text-decoration:none;
+    border-bottom: 2pt solid var(--menu-color);
+}
+
+.soc-item a{
+    padding-left:1em;
+}
+
+.soc-item a:visited{
+    color:var(--menu-color);
+}
+
+.soc-item-first {
+    color: black;
+    flex-grow:1;
+}
