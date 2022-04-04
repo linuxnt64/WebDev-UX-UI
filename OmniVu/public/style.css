@@ -5,10 +5,14 @@
 
 html {
     --size9: 9pt;
-    --size12: 12pt;
+    --sizeH4: 12pt;
+    --sizeH1: 48pt;
+    --sizeH3: 16pt;
     --menu-color: rgb(102, 169, 211);
     --txtColPresH3: #69A1BB;
     --midBlue: #006DE8;
+    --darkBlue: #00152D;
+    --InvText: rgba(255, 255, 255, 0.8);
 }
 
 .btnBlue {
@@ -35,8 +39,22 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body h1 {
+    font-size: var(--sizeH1);
+    font-weight: 400;
+}
+
+body h3 {
+    font-size: var(--sizeH3);
+    font-weight: 400;
+}
+
+body h4 {
+    font-size: var(--sizeH4);
+    font-weight: 400;
+}
+
 #firstViewBg {
-    background: rgb(255, 255, 255);
     background: radial-gradient( rgba(255, 255, 255, 1)
     10%, rgba(169, 199, 236, 1) 100%);
 }
@@ -155,14 +173,13 @@ header {
 }
 
 #presHeaders h1 {
-    font-size: 48pt;
+    font-size: var(--sizeH1);
     font-weight: 400;
     line-height: 97%;
 }
 
 .bullets {
     display: flex;
-    align-items:;
     font-size: 24pt;
 }
 
@@ -182,9 +199,7 @@ header {
     flex-direction: row-reverse;
     gap: 75px;
     max-width: 1225px;
-    margin-right: auto;
-    margin-left: auto;
-
+    margin: 5rem auto;
 }
 
 .aboutContainer {
@@ -193,9 +208,8 @@ header {
     justify-content: center;
 }
 
-
 .aboutContainer h1 {
-    font-size: 40pt;
+    font-size: var(--sizeH1);
     font-weight: 400;
 }
 
@@ -207,7 +221,7 @@ header {
     line-height: 1.5rem;
 }
 ¨
-#aboutUs {
+.aboutUs {
     display: flex;
     color: var(--midBlue);
     font-size: var(--size9)
@@ -233,4 +247,66 @@ header {
 
 #buttons {
     margin-top: 1em;
+}
+/* ___________________________________ growth ______________________________*/
+#businessGrowth {
+    background: var(--darkBlue);
+    display: flex;
+    justify-content: center;
+}
+
+#growth {
+    margin: 5rem auto;
+    display: flex;
+    color:var(--InvText);
+    gap: 75px;
+    max-width: 1225px;
+}
+/* ___________________________________ Meeting ______________________________*/
+#meeting {
+    max-width: 1225px;
+    margin: 5rem auto;
+    padding: 5rem;
+    background: var(--darkBlue);
+    color:var(--InvText);
+}
+
+#meetingHeader {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#meetingHeader > * {
+    background-color: var(--darkBlue);
+    padding: 0.5rem;
+}
+
+#UserEnv {
+    display:flex;
+    flex-direction: row;
+    background-color: var(--darkBlue);
+}
+/* ___________________________________ footer ______________________________*/
+footer {
+    background: var(--darkBlue);
+    display: flex;
+    justify-content: center;
+}
+
+#footBg {
+    margin: 5rem auto;
+    display: flex;
+    color:var(--InvText);
+    gap: 75px;
+    max-width: 1225px;
+}
+
+#left > * , #right > *  {
+    padding: 0.5rem;
+    color:var(--InvText);
+}
+/* ___________________________________ 02_services ______________________________*/
+#services {
+    display:flex;
 }

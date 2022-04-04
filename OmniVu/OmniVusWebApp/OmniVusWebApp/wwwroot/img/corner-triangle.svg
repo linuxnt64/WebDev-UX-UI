@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #006de8;
+      }
+    </style>
+  </defs>
+  <path id="corner-triangle" class="cls-1" d="M975,1510v-23h23" transform="translate(-975 -1487)"/>
+</svg>

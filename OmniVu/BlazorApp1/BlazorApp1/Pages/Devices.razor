@@ -1,0 +1,46 @@
+﻿<section class="card shadow">
+    <article class="card-body">
+        <h5 class="card-title">Devices</h5>
+        <table class="table">
+            <thead>
+                <th scope="col">DeviceId</th>
+                <th scope="col">Placement</th>
+                <th scope="col">Status</th>
+                <th scope="col">Sensor Type</th>
+                <th scope="col">Last Updated</th>
+                <th scope="col">Measurements</th>
+                <th scope="col">Notifications</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Guid.NewGuid().ToString()</td>
+                    <td>connected</td>
+                    <td>Conference Room</td>
+                    <td>Temperature Sensor</td>
+                    <td>@DateTime.Now</td>
+                    <td>Temperature : 22'C, Humidity: 44 %</td>
+                    <td></td>
+                    <td>
+                        <i class="fa-solid fa-play-pause">&nbsp;</i><i class="fa-solid fa-pen-to-square"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>36d5e179-cb7b-Udfb-a10c-25b1925a1404</td>
+                    <td>connected</td>
+                    <td>Fridge 1</td>
+                    <td>Temperature Sensor</td>
+                    <td>@DateTime.Now</td>
+                    <td>Temperature : 10'C, Humidity: 21%</td>
+                    <td><i class="fa-solid fa-triangle-exclamation">&nbsp;Overtemp</i></td>
+                    <td>
+                        <i class="fa-solid fa-play-pause">&nbsp;</i><i class="fa-solid fa-pen-to-square"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+</section>
+@code {
+
+}

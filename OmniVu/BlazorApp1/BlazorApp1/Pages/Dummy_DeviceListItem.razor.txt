@@ -1,0 +1,17 @@
+﻿<tr>
+    <td>36d5e179-cb7b-Udfb-a10c-25b1925a1404</td>
+    <td>connected</td>
+    <td>Fridge 1</td>
+    <td>Temperature Sensor</td>
+    <td>@DateTime.Now</td>
+    <td>Temperature : 10'C, Humidity: 21%</td>
+    <td><i class="fa-solid fa-triangle-exclamation">&nbsp;Overtemp</i></td>
+    <td>
+        <i class="fa-solid fa-play-pause">&nbsp;</i>
+        <i class="fa-solid fa-pen-to-square"></i>
+    </td>
+</tr>
+ 
+@code {
+
+}

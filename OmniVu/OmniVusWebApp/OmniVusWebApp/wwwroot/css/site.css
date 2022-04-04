@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    --size9: 9pt;
+    --sizeH4: 12pt;
+    --sizeH1: 48pt;
+    --sizeH3: 16pt;
+    --menu-color: rgb(102, 169, 211);
+    --txtColPresH3: #69A1BB;
+    --midBlue: #006DE8;
+    --darkBlue: #00152D;
+    --InvText: rgba(255, 255, 255, 0.8);
+}
+
+.btnBlue {
+    background-color: var(--midBlue);
+    text-decoration: none;
+    color: white;
+    padding-right: 3em;
+    padding-left: 3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.btnGrey {
+    background-color: #B7C3D6;
+    text-decoration: none;
+    color: white;
+    padding-right: 3em;
+    padding-left: 3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+    body h1 {
+        font-size: var(--sizeH1);
+        font-weight: 400;
+    }
+
+    body h3 {
+        font-size: var(--sizeH3);
+        font-weight: 400;
+    }
+
+    body h4 {
+        font-size: var(--sizeH4);
+        font-weight: 400;
+    }
+
+#firstViewBg {
+    background: radial-gradient( rgba(255, 255, 255, 1) 10%, rgba(169, 199, 236, 1) 100%);
+
+}
+
+#firstView {
+    padding-top: 175px;
+    max-width: 1220px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#headerContainer {
+    display: flex;
+    max-width: 1220px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+header {
+    position: absolute;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.logobox {
+    flex-direction: column;
+    flex-shrink: 2;
+    margin-right: 6%;
+    background-color: whitesmoke;
+    padding-left: 2.5em;
+    padding-right: 2em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    display: flex;
+}
+
+    .logobox h1 {
+        font-size: 28pt;
+        font-weight: 700;
+        color: #002249;
+        margin: 0em;
+    }
+
+    .logobox p {
+        font-size: var(--size9);
+        color: var(--menu-color);
+    }
+
+.sectnavbars {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+    .sectnavbars > * {
+        padding-top: 1em;
+    }
+
+    .sectnavbars a {
+        justify-content: space-between;
+        padding-left: 1em;
+        text-decoration: none;
+        color: var(--menu-color);
+        font-size: 11pt;
+        text-decoration: none;
+    }
+
+        .sectnavbars a:visited {
+            color: var(--menu-color);
+        }
+
+        .sectnavbars a:hover {
+            color: rgb(37, 7, 206);
+            font-weight: 500;
+        }
+
+.social-bar {
+    display: flex;
+    padding-left: 0em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid var(--menu-color);
+}
+
+.menubar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+    .menubar > * {
+        padding-right: 3em;
+        padding-top: 1em;
+    }
+
+#mail {
+    flex-grow: 1;
+    padding-left: 0em;
+    color: var(--menu-color);
+}
+
+#btnBook:hover {
+    background-color: rgb(118, 164, 240);
+    color: rgb(2, 2, 2);
+    font-weight: 400;
+}
+
+/* ___________________________________ presentation ___________________________*/
+
+#presentation {
+    display: flex;
+}
+
+#presHeaders {
+    padding: 3.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+    #presHeaders h3 {
+        font-size: 16pt;
+        font-weight: 400;
+        color: var(--txtColPresH3);
+        padding-bottom: 1em;
+    }
+
+    #presHeaders h1 {
+        font-size: var(--sizeH1);
+        font-weight: 400;
+        line-height: 97%;
+    }
+
+.bullets {
+    display: flex;
+    align-items: center;
+    font-size: 24pt;
+}
+
+.circle {
+    margin-left: -24px;
+}
+
+.bullets span {
+    font-size: 20pt;
+}
+
+/* ___________________________________ experience ___________________________*/
+
+#experience {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 75px;
+    max-width: 1225px;
+    margin: 5rem auto;
+}
+
+.aboutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    .aboutContainer h1 {
+        font-size: var(--sizeH1);
+        font-weight: 400;
+    }
+
+    .aboutContainer p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-size: 13.5pt;
+        font-weight: 200;
+        line-height: 1.5rem;
+    }
+
+¨
+.aboutUs {
+    display: flex;
+    color: var(--midBlue);
+    font-size: var(--size9)
+}
+
+.containerYearsOf {
+    display: flex;
+    align-items: flex-start;
+}
+
+.bigBoldBlue {
+    font-size: 6.5em;
+    color: var(--midBlue);
+    font-weight: 400;
+}
+
+.yearsOfExperience {
+    font-size: 24pt;
+    margin-right: 5em;
+    padding-top: 1.25em;
+    padding-left: 0.75em;
+}
+
+#buttons {
+    margin-top: 1em;
+}
+/* ___________________________________ growth ______________________________*/
+#businessGrowth {
+    background: var(--darkBlue);
+    display: flex;
+    justify-content: center;
+}
+
+#growth {
+    margin: 5rem auto;
+    display: flex;
+    color: var(--InvText);
+    gap: 75px;
+    max-width: 1225px;
+}
+/* ___________________________________ Meeting ______________________________*/
+#meeting {
+    max-width: 1225px;
+    margin: 5rem auto;
+    padding: 5rem;
+    background: var(--darkBlue);
+    color: var(--InvText);
+}
+
+#meetingHeader {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+    #meetingHeader > * {
+        background-color: var(--darkBlue);
+        padding: 0.5rem;
+    }
+
+#UserEnv {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--darkBlue);
+}
+/* ___________________________________ footer ______________________________*/
+footer {
+    background: var(--darkBlue);
+    display: flex;
+    justify-content: center;
+}
+
+#footBg {
+    margin: 5rem auto;
+    display: flex;
+    color: var(--InvText);
+    gap: 75px;
+    max-width: 1225px;
+}
+
+#left > *, #right > * {
+    padding: 0.5rem;
+    color: var(--InvText);
+}
+/* ___________________________________ services ______________________________*/
+#services {
+    display: flex;
+}
+/* ___________________________________ contact _______________________________*/
+#contactform {
+    display:flex;
+    flex-direction:column;
+    width: 40%;
+}

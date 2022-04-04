@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e7e84ad9-5aa8-4ed4-98a5-185cfe5318e9": {
+      "ProjectGuid": "e7e84ad9-5aa8-4ed4-98a5-185cfe5318e9",
+      "DisplayName": "BlazorApp1",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "cf98ea6b-12ef-46f7-8876-0d926ee9a413": {
+      "ProjectGuid": "cf98ea6b-12ef-46f7-8876-0d926ee9a413",
+      "DisplayName": "EmbedControlAPI",
+      "ColorIndex": 1
+    },
+    "78eafeae-f7fe-48e2-9408-dd78d19c135e": {
+      "ProjectGuid": "78eafeae-f7fe-48e2-9408-dd78d19c135e",
+      "DisplayName": "AzureFunctions",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

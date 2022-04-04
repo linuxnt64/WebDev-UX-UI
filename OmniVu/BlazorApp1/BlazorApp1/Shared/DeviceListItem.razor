@@ -1,0 +1,21 @@
+﻿@using BlazorApp1.Models
+<tr>
+    <td>@device.DeviceId</td>
+    <td>@device.Status</td>
+    <td>@device.Placement</td>
+    <td>@device.SensorType</td>
+    <td>@device.LastUpdated</td>
+    <td>Temperature: @device.Temperature C, Humidity: @device.Humidity%</td>
+    <td>Alert: @device.Alert</td>
+    <td><i class="fa-solid fa-triangle-exclamation"></i></td>
+    <td>
+        <i class="fa-solid fa-play-pause">&nbsp;</i>
+        <i class="fa-solid fa-pen-to-square"></i>
+    </td>
+</tr>
+
+@code {
+    [Parameter]
+    public DeviceItem device { get; set; }
+   
+}

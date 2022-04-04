@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>template document</title>
+    <title>01_Home</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -19,16 +19,16 @@
                 <article class="sectnavbars">
                     <div class="social-bar">
                         <a id="mail" href="#">info@domain.com</a>
-                        <a href="#">Facebook</a>
-                        <a href="#">Twitter</a>
-                        <a href="#">LinkedIn</a>
-                        <a href="#">YouTube</a>
+                        <a href="www.facebook.com">Facebook</a>
+                        <a href="www.twitter.com">Twitter</a>
+                        <a href="www.linkedin.com">LinkedIn</a>
+                        <a href="www.youtube.com">YouTube</a>
                     </div>
                     <nav class="menubar">
-                        <a href="#">Home</a>
-                        <a href="#">Services</a>
-                        <a href="#">Contact</a>
-                        <a class="btnBlue" href="#">Book a meeting</a>
+                        <a href="./index.html">Home</a>
+                        <a href="./02_services.html">Services</a>
+                        <a href="./03_contact.html">Contact</a>
+                        <a class="btnBlue" href="#meeting">Book a meeting</a>
                     </nav>
                 </article>
             </header>
@@ -49,10 +49,10 @@
             </section> <!-- presentation -->
         </section>
     </section><!-- firstViewBg -->
-    <!-- ------------------------------  2:nd section ---------------------------- -->
+    <!-- --------------------------  2:nd section - experience ------------------------ -->
     <section id="experience">
         <article class="aboutContainer">
-            <div id="aboutUs">
+            <div class="aboutUs">
                 <span>About us &nbsp &nbsp;</span><img src="./img/line.svg" alt="thin-blue-line">
             </div>
             <h1>You can't use up creativity.</h1>
@@ -66,19 +66,77 @@
                 <div class="bigBoldBlue">15</div>
                 <div class="yearsOfExperience">Years Of Experience</div>
             </div>
-            <div id="buttons">
+            <div id="experienceButtons">
                 <a class="btnBlue" href="#">Learn more</a>
                 <a class="btnGrey" href="#">Intro video</a>
             </div>
-        </article> <!-- presHeaders -->
+        </article> <!-- aboutContainer -->
         <aside id="BigTriQuad">
-            <img src="./img/page2-aside-graphics.svg">
+            <img src="./img/section2-aside-graphics.svg">
         </aside>
     </section>
-    <!-- ------------------------------  3:nd section ---------------------------- -->
-    <section id="growth">
+    <!-- -----------------------  3:rd section - businessGrowth --------------------- -->
+    <section id="businessGrowth">
+        <section id="growth">
+            <article class="aboutContainer">
+                <div id="IntroLabel">
+                    <span>Intro &nbsp &nbsp &nbsp;</span><img src="./img/line.svg" alt="thin-blue-line">
+                </div>
+                <h1>How we growth our business.</h1>
+                <h3>The introduction of cloud and mobile technologies into enterprise software.</h3>
+                <p>Whether you are building an enterprise web portal or a state-of-the-art website,
+                    you always need the right modern tools. Well-built and maintained .NET frameworks
+                    provide those tools in abundance, allowing developers to save time, re-use code,
+                    and streamline the back end. As software development tools continues.</p>
+                <div id="growthButton">
+                    <a class="btnBlue" href="#">Learn more</a>
+                </div>
+            </article> <!-- aboutContainer -->
+            <aside id="DarkBigTriQuad">
+                <img src="./img/section3-aside-graphics.svg">
+            </aside>
+        </section>
     </section>
+    <!-- ------------------------ 4:th section - Meeting ------------------------- -->
+    <section id="meeting">
+        <article id="meetingHeader">
+            <h1>Book a meeting</h1>
+            <p>Does any industry face a more complex audience journey and</p>
+            <p>marketing sales process than B2B technology.</p>
+            <div id="UserEnv">
+                <input type="text" placeholder="Enter your name" required></input>
+                <input type="email"  placeholder="Enter your email" required></input>
+            </div>
+            <input type="text" placeholder="Enter your questions & subject here." required>
+            <a class="btnBlue" href="#">Submit</a>
+        </article>
+    </section>
+    <!-- ------------------------------  footer ---------------------------------- -->
     <footer>
+        <section id=footBg>
+            <article id="left">
+                <h1>OmniVus.</h1>
+                <p>
+                    The web has changed a lot since we posted our first article back in 2007.
+                    The team at Mattin-Lassi Group has changed too, as have the things that
+                    we bring to our community, conferences, books and our membership added to
+                    the online magazine.
+
+                    One thing that hasn't changed is that we’re a
+                    small team — with most of us not working
+                </p>
+            </article>
+            <article id="right">
+                <h1>Working Hours</h1>
+                <h3>Monday - Friday: 7:00 - 17:00</h3>
+                <h3>Saturday: 7:00 - 12:00</h3>
+                <h3>Sunday and holidays: 8:00 - 10:00</h3>
+                <p>
+                    <strong>For more then 15 years,</strong>
+                    IT Service has been a reliable partner in the field of logistics and cargo forwarding.
+                </p>
+            </article>
+        </section>
     </footer>
 </body>
 

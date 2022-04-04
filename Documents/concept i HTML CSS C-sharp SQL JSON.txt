@@ -1,0 +1,29 @@
+HTML
+	Element
+		Tag
+			Attribute="Value"
+			Content
+CSS
+	Selector {
+		Property: 
+			Value;
+C#
+	Class {
+		Method, Parameter 	(spec. Constructor)
+		Field 				(ie variable, property)
+		Statement	
+			Expression
+				Operator
+JSON {
+	"Key":
+		"Value", ...
+	}
+
+Database
+	Entity
+		Property
+
+SQL
+	Table
+		Record				(Cell)
+			Field			Column)
