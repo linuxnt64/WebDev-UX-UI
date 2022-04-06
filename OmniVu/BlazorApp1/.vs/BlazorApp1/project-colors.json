@@ -18,9 +18,14 @@
     },
     "78eafeae-f7fe-48e2-9408-dd78d19c135e": {
       "ProjectGuid": "78eafeae-f7fe-48e2-9408-dd78d19c135e",
-      "DisplayName": "AzureFunctions",
+      "DisplayName": "AzureFunction",
       "ColorIndex": 2
+    },
+    "3ab1fb66-46ae-4460-9525-1668645a7576": {
+      "ProjectGuid": "3ab1fb66-46ae-4460-9525-1668645a7576",
+      "DisplayName": "IoTDevice",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

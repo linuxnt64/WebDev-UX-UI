@@ -8,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\Bl
 		{78EAFEAE-F7FE-48E2-9408-DD78D19C135E} = {78EAFEAE-F7FE-48E2-9408-DD78D19C135E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctions", "GetDevices\AzureFunctions.csproj", "{78EAFEAE-F7FE-48E2-9408-DD78D19C135E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunction", "GetDevices\AzureFunction.csproj", "{78EAFEAE-F7FE-48E2-9408-DD78D19C135E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
