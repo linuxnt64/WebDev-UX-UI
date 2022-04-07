@@ -6,21 +6,23 @@
         <h5 class="card-title">Devices</h5>
         <table class="table">
             <thead>
-                <th scope="col">DeviceId</th>
-                <th scope="col">Status</th>
-                <th scope="col">Placement</th>
-                <th scope="col">Sensor Type</th>
-                <th scope="col">Last Updated</th>
-                <th scope="col">Measurements</th>
-                <th scope="col">Notifications</th>
-                <th scope="col"></th>
+                <tr>
+                    <th scope="col">DeviceId</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Placement</th>
+                    <th scope="col">Sensor Type</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Measurements</th>
+                    <th scope="col">Notifications</th>
+                    <th scope="col"></th>
+                </tr>
             </thead>
             <tbody>
                 @if(devices==null)
                 {
-                        <tr>
-                            <td colspan="8">Loading ...</td>
-                        </tr>
+                    <tr>
+                        <td colspan="8">Loading ...</td>
+                    </tr>
                 }
                 else
                 {
@@ -38,6 +40,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        devices = await Http.GetFromJsonAsync<DeviceItem[]>("https://embedcontrolapi.azurewebsites.net/api/GetDevices?");
+        devices = await Http.GetFromJsonAsync<DeviceItem[]>("http://embedcontrolapi.azurewebsites.net/api/iotapi?code=gcsNGYdXKglsFRGiv9OX7mMUpZjSRAalZtGqrJHerKvC8Fw4/lvlPA==");
+ //       devices = await Http.GetFromJsonAsync<DeviceItem[]>("http://localhost:7071/api/iotapi");
     }
 }

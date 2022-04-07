@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices.Client;
+using Microsoft.Azure.Devices.Shared;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
@@ -24,9 +25,18 @@ namespace AzureFunctHubAPI
         {
             var temperature = rnd.Next(20, 30);
             var humidity = rnd.Next(30, 40);
+            var temperatureAlert = false;
+            if(temperature >= 25) { temperatureAlert = true; }
             var data = new { temperature = temperature, humidity = humidity };
             var message = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data)));
             await deviceClient.SendEventAsync(message);
+
+            TwinCollection reportedProperties = new TwinCollection();
+            reportedProperties["sensorType"] = "Console Device";
+            reportedProperties["temperature"] = temperature;
+            reportedProperties["humidity"] = humidity;
+            reportedProperties["temperatureAlert"] = temperatureAlert;
+            await deviceClient.UpdateReportedPropertiesAsync(reportedProperties);
         }
     }
 }

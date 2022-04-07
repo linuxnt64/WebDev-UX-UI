@@ -15,8 +15,8 @@ namespace GetDevices
     public static class GetDevices
     {
         [FunctionName("GetDevices")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+        public static IActionResult Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "dummyapi")] HttpRequest req,
             ILogger log)
         {
             var list = new List<DeviceItem>()
@@ -27,10 +27,10 @@ namespace GetDevices
                     Status = "connected",
                     Placement="Fridge 1",
                     SensorType="Temperature Sensor",
-                    LastUpdated=DateTime.Now.ToString(),
-                    Temperature="10",
-                    Humidity="21",
-                    Alert="Overtemp!"
+                    LastUpdated=DateTime.Now,
+                    Temperature=10,
+                    Humidity=21,
+                    Alert=false
                 }
             };
             return new OkObjectResult(list);
