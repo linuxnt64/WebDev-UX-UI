@@ -12,9 +12,9 @@ using AzureFunctions.Models;
 
 namespace GetDevices
 {
-    public static class GetDevices
+    public static class DummyAPI
     {
-        [FunctionName("GetDevices")]
+        [FunctionName("DummyAPI")]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "dummyapi")] HttpRequest req,
             ILogger log)

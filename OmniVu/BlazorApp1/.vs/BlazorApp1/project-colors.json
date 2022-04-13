@@ -25,7 +25,12 @@
       "ProjectGuid": "3ab1fb66-46ae-4460-9525-1668645a7576",
       "DisplayName": "IoTDevice",
       "ColorIndex": 3
+    },
+    "609f07ae-edde-4b3f-a12d-eacbf2da5822": {
+      "ProjectGuid": "609f07ae-edde-4b3f-a12d-eacbf2da5822",
+      "DisplayName": "ConsoleApps",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

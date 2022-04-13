@@ -12,6 +12,7 @@ namespace AzureFunctHubAPI
 {
     public class IoTDevice1
     {
+ //       private readonly DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(Environment.GetEnvironmentVariable("IotDevice1"));
         private readonly DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=embedcontrol-IotHub.azure-devices.net;DeviceId=080973bc-e458-4eb9-a0a4-9cc408648903;SharedAccessKey=fM8sdnp4DC3ygGYGU2rK4XmTK8WTvIcskJGSu3rPz2M=");
         private Random rnd = new Random();
 
@@ -32,7 +33,8 @@ namespace AzureFunctHubAPI
             await deviceClient.SendEventAsync(message);
 
             TwinCollection reportedProperties = new TwinCollection();
-            reportedProperties["sensorType"] = "Console Device";
+            reportedProperties["sensorType"] = "Console app device simulator";
+            reportedProperties["placement"] = "Azure";
             reportedProperties["temperature"] = temperature;
             reportedProperties["humidity"] = humidity;
             reportedProperties["temperatureAlert"] = temperatureAlert;

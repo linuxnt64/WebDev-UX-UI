@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=embedcontrolapistorage;AccountKey=Cqr0tz4XfWYm2ld2bAgRLT3OayzM+tdAvIhLcaLvil4kqHkFZUxt364te5hD4PvtYdK8KcG/nzC1Z9PddtRwVA==;BlobEndpoint=https://embedcontrolapistorage.blob.core.windows.net/;TableEndpoint=https://embedcontrolapistorage.table.core.windows.net/;QueueEndpoint=https://embedcontrolapistorage.queue.core.windows.net/;FileEndpoint=https://embedcontrolapistorage.file.core.windows.net/",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "IotDevice1": "HostName=embedcontrol-IotHub.azure-devices.net;DeviceId=080973bc-e458-4eb9-a0a4-9cc408648903;SharedAccessKey=fM8sdnp4DC3ygGYGU2rK4XmTK8WTvIcskJGSu3rPz2M=",
+    "ServiceSDK": "HostName=embedcontrol-IotHub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=IPfcPbynOPwxU3JV/e+JUU6Zrk1vuFwFzY67bhvASrY="
+  },
+  "Host": { "CORS": "*" }
+}
