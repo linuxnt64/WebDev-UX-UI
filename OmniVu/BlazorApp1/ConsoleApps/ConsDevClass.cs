@@ -13,6 +13,7 @@ namespace ConsoleApps
     {
 
         public string connectionString = "";
+        public string instance = "";
         private int temperature, humidity;
         private bool temperatureAlert;
         private readonly DeviceClient deviceClient;
@@ -21,14 +22,15 @@ namespace ConsoleApps
         public ConsDevClass(string connectionString)
         {
             deviceClient = DeviceClient.CreateFromConnectionString(connectionString);
+            instance = connectionString.Substring(56, 10);
         }
         public void Loop()
         {
             while (true)
             {
                 SendMessage();
-                System.Console.WriteLine($"Message sent to Azure IOT Hub at {DateTime.Now}: {temperature}'C , {humidity}% , Alert:{temperatureAlert}");
-                Thread.Sleep(10 * 1000);
+                System.Console.WriteLine($"{instance} sent a message to Azure IOT Hub at {DateTime.Now}: {temperature}'C , {humidity}% , Alert:{temperatureAlert}");
+                Thread.Sleep(30 * 1000);
             }
         }
 
