@@ -1,0 +1,51 @@
+﻿@using BlazorApp1.Models
+@inject HttpClient Http
+
+<section class="card shadow">
+    <article class="card-body">
+        <h5 class="card-title">Devices</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">DeviceId</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Placement</th>
+                    <th scope="col">Sensor Type</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Measurements</th>
+                    <th scope="col">Notifications</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(devices==null)
+                {
+                    <tr>
+                        <td colspan="8">Loading ...</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach(var device in devices)
+                     {
+                        <DeviceListItem Device="@device"/>
+                     }
+                }
+            </tbody>
+        </table>
+    </article>
+</section>
+@code {
+    private DeviceItem[] devices;
+    private Timer timer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        timer = new Timer(async (object stateInfo) =>
+        {
+            devices = await Http.GetFromJsonAsync<DeviceItem[]>("http://embedcontrolapi.azurewebsites.net/api/iotapi?code=gcsNGYdXKglsFRGiv9OX7mMUpZjSRAalZtGqrJHerKvC8Fw4/lvlPA==");
+            // devices = await Http.GetFromJsonAsync<DeviceItem[]>("http://localhost:7071/api/dummyapi");
+            StateHasChanged();
+        },new AutoResetEvent(false), 0, (360 * 1000) );
+    }
+}

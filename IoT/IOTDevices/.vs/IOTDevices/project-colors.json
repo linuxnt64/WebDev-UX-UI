@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b9065db1-a381-4c18-a681-5c768bd2b53b": {
+      "ProjectGuid": "b9065db1-a381-4c18-a681-5c768bd2b53b",
+      "DisplayName": "IOTDevices",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
