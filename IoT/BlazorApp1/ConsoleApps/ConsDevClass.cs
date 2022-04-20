@@ -28,25 +28,26 @@ namespace ConsoleApps
         }
         public async Task SendMessage()
         {
+            bool dryRun = false;
             var timer = new PeriodicTimer(TimeSpan.FromSeconds(3 * sleepTime));
-            System.Console.WriteLine($"{instance} has started on thread {Thread.CurrentThread.ManagedThreadId} at {DateTime.Now}");
+            if (!dryRun) System.Console.WriteLine($"{instance} has started on thread {Thread.CurrentThread.ManagedThreadId} at {DateTime.Now}");
             int lastTemp = 25, temperature = 25;
-            
-            while (await timer.WaitForNextTickAsync())
+
+            do
             {
-                int highlow = rnd.Next(0, 99);
+                int highlow = rnd.Next(0, 100);
                 lastTemp = temperature;
                 temperature = rnd.Next(20, 30);
-                if (temperature > lastTemp ) temperature=++lastTemp;
-                else if (temperature < lastTemp) temperature=--lastTemp;
-                if (highlow > 97) { temperature = temperature + 5; Console.Write("rnd High : "); }
-                if (highlow < 3)  {temperature = temperature - 5; Console.Write("rnd Low : "); }
+                if (temperature > lastTemp) temperature = ++lastTemp;
+                else if (temperature < lastTemp) temperature = --lastTemp;
+                if (highlow > 97 & temperature <= 30) { temperature = (temperature + 12); Console.Write("rnd High : "); }
+                if (highlow < 3 & temperature >= 20) { temperature = temperature - 12; Console.Write("rnd Low : "); }
                 int humidity = rnd.Next(30, 40);
                 bool temperatureAlert = (temperature >= 27);
 
                 var data = new { temperature = temperature, humiditiy = humidity };
                 var message = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data)));
-                await deviceClient.SendEventAsync(message);
+                if (!dryRun) await deviceClient.SendEventAsync(message);
 
                 TwinCollection reportedProperties = new TwinCollection();
                 reportedProperties["temperature"] = temperature;
@@ -54,9 +55,9 @@ namespace ConsoleApps
                 reportedProperties["temperatureAlert"] = temperatureAlert;
                 reportedProperties["sensorType"] = "Console app device simulator";
                 reportedProperties["placement"] = "Local PC";
-                await deviceClient.UpdateReportedPropertiesAsync(reportedProperties);
+                if (!dryRun) await deviceClient.UpdateReportedPropertiesAsync(reportedProperties);
                 System.Console.WriteLine($"{instance} sent a message to Azure IOT Hub at {DateTime.Now}: {temperature}'C , {humidity}% , Alert:{temperatureAlert}");
-            }
+            } while (await timer.WaitForNextTickAsync());
         }
     }
 }

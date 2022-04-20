@@ -15,7 +15,7 @@ namespace AzureFunction
 {
     public static class IotApi
     {
-        private static readonly RegistryManager registryManager = RegistryManager.CreateFromConnectionString("HostName=embedcontrol-IotHub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=IPfcPbynOPwxU3JV/e+JUU6Zrk1vuFwFzY67bhvASrY=");
+        private static readonly RegistryManager registryManager = RegistryManager.CreateFromConnectionString("IotHub");
 
         [FunctionName("IotApi")]
         public static async Task<IActionResult> Run(

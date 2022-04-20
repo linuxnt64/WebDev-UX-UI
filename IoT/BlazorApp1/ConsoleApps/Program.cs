@@ -19,17 +19,14 @@
             }
             catch
             {
-                _sleepTime = 60;
+                _sleepTime = 10;
             }
 
             foreach (var device in _iotdevices)
             {
                 ConsDevClass IotDevice = new ConsDevClass(device);
-                
                 IotDevice.Init(_sleepTime);
-/*               Task.Run(async () => await (IotDevice.SendMessage()));
-                 Thread.Sleep(10 * 1000); 
-*/            }
+            }
             Console.WriteLine("Init has finished, Any key to shut down ...");
             Console.ReadKey();
         }

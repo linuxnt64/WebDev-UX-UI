@@ -69,3 +69,4 @@ C:\UX-UI\IoT\BlazorApp1\ConsoleApps\obj\Debug\net6.0\ConsoleApps.dll
 C:\UX-UI\IoT\BlazorApp1\ConsoleApps\obj\Debug\net6.0\ref\ConsoleApps.dll
 C:\UX-UI\IoT\BlazorApp1\ConsoleApps\obj\Debug\net6.0\ConsoleApps.pdb
 C:\UX-UI\IoT\BlazorApp1\ConsoleApps\obj\Debug\net6.0\ConsoleApps.genruntimeconfig.cache
+C:\UX-UI\IoT\BlazorApp1\ConsoleApps\obj\Debug\net6.0\ConsoleApps.csproj.AssemblyReference.cache

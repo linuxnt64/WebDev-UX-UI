@@ -12,12 +12,12 @@ namespace AzureFunctHubAPI
 {
     public class IoTDevice1
     {
- //       private readonly DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(Environment.GetEnvironmentVariable("IotDevice1"));
-        private readonly DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=embedcontrol-IotHub.azure-devices.net;DeviceId=080973bc-e458-4eb9-a0a4-9cc408648903;SharedAccessKey=fM8sdnp4DC3ygGYGU2rK4XmTK8WTvIcskJGSu3rPz2M=");
+        private readonly DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(Environment.GetEnvironmentVariable("IotDevice1"));
+        //       private readonly DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=embedcontrol-IotHub.azure-devices.net;DeviceId=080973bc-e458-4eb9-a0a4-9cc408648903;SharedAccessKey=fM8sdnp4DC3ygGYGU2rK4XmTK8WTvIcskJGSu3rPz2M=");
         private Random rnd = new Random();
 
         [FunctionName("IotDevice1")]
-        public async Task Run([TimerTrigger("0 */1 07-19 * * *")] TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("0 */1 07-15 * * *")] TimerInfo myTimer, ILogger log)
         {
             await SendMessageAsync();
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
