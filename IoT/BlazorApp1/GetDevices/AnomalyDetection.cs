@@ -26,7 +26,6 @@ namespace AzureFunction
                 log.LogInformation("Temperature " + input[0].GetPropertyValue<float>("temperature"));
                 log.LogInformation("Humidity " + input[0].GetPropertyValue<int>("humidity"));
                 log.LogInformation("Anomaly Detected? " + input[0].GetPropertyValue<int>("anomalyDetected"));
-                Thread.Sleep(1000);
             }
         }
     }
